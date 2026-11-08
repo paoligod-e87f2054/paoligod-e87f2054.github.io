@@ -1,0 +1,1021 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>91次元官网-二次元社区_动漫同人_漫展资讯</title>
+  <meta name="description" content="91次元官网是面向二次元爱好者的内容社区，提供动漫同人、漫展资讯、COSPLAY图集与社区讨论，适合追番、找同人和逛展的用户浏览。">
+  <meta name="keywords" content="二次元社区,动漫同人,漫展资讯,COSPLAY图集,追番">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%232b1e4e'/%3E%3Cpath d='M8 20 L16 6 L24 20 Z' fill='%23ff8fa3'/%3E%3Ccircle cx='16' cy='22' r='3' fill='%23ffd166'/%3E%3C/svg%3E">
+  <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+  <style>
+    *{margin:0;padding:0;box-sizing:border-box;}
+    :root{
+      --bg:#f7f4fb;
+      --panel:#ffffff;
+      --ink:#1e1b2e;
+      --ink-soft:#4a4560;
+      --muted:#7a7490;
+      --line:#e2dcef;
+      --brand:#5b3fa8;
+      --brand-deep:#3b2a6e;
+      --accent:#ff6b8a;
+      --accent-soft:#fff0f3;
+      --gold:#f5b800;
+      --shadow-sm:0 1px 3px rgba(40,20,80,.06);
+      --shadow:0 6px 18px rgba(40,20,80,.08);
+      --radius:12px;
+      --radius-sm:8px;
+      --announce-h:38px;
+      --header-h:64px;
+      --sticky-offset:calc(var(--announce-h) + var(--header-h));
+      --font-sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+      --font-mono:"SFMono-Regular",Consolas,monospace;
+    }
+    html{scroll-behavior:smooth;scroll-padding-top:calc(var(--sticky-offset) + 16px);}
+    body{
+      font-family:var(--font-sans);
+      background:var(--bg);
+      color:var(--ink);
+      line-height:1.65;
+      font-size:15px;
+      -webkit-font-smoothing:antialiased;
+    }
+    a{color:inherit;text-decoration:none;}
+    img,svg{display:block;max-width:100%;}
+    button{font-family:inherit;cursor:pointer;}
+    .wrap{max-width:1360px;margin:0 auto;padding:0 24px;}
+
+    /* ===== 吸顶公告条 + 页头 ===== */
+    .announce-bar{
+      height:var(--announce-h);
+      background:linear-gradient(90deg,#3b2a6e,#5b3fa8 55%,#7a5fd4);
+      color:#fff;
+      font-size:13px;
+      display:flex;
+      align-items:center;
+      position:sticky;
+      top:0;
+      z-index:60;
+      overflow:hidden;
+    }
+    .announce-bar .wrap{display:flex;align-items:center;gap:12px;width:100%;}
+    .announce-tag{
+      background:var(--accent);
+      color:#fff;
+      font-size:11px;
+      font-weight:700;
+      padding:2px 8px;
+      border-radius:20px;
+      letter-spacing:.5px;
+      flex-shrink:0;
+    }
+    .announce-bar p{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;opacity:.95;}
+    .announce-bar a{margin-left:auto;font-weight:600;border-bottom:1px dashed rgba(255,255,255,.6);flex-shrink:0;}
+
+    .site-header{
+      height:var(--header-h);
+      background:rgba(255,255,255,.92);
+      backdrop-filter:blur(8px);
+      border-bottom:1px solid var(--line);
+      position:sticky;
+      top:var(--announce-h);
+      z-index:55;
+    }
+    .site-header .wrap{height:100%;display:flex;align-items:center;gap:20px;}
+    .brand{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+    .brand-mark{
+      width:38px;height:38px;border-radius:11px;
+      background:linear-gradient(135deg,#5b3fa8,#8a6be0);
+      display:grid;place-items:center;
+      box-shadow:0 4px 10px rgba(91,63,168,.28);
+    }
+    .brand-mark svg{width:24px;height:24px;}
+    .brand-name{font-size:20px;font-weight:800;letter-spacing:.3px;color:var(--brand-deep);white-space:nowrap;}
+    .header-nav{display:flex;align-items:center;gap:4px;margin-left:8px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;}
+    .header-nav::-webkit-scrollbar{display:none;}
+    .header-nav a{
+      font-size:14px;color:var(--ink-soft);padding:6px 11px;border-radius:8px;
+      white-space:nowrap;transition:.15s;font-weight:500;
+    }
+    .header-nav a:hover{background:var(--accent-soft);color:var(--accent);}
+    .header-actions{margin-left:auto;display:flex;align-items:center;gap:10px;flex-shrink:0;}
+    .search-mini{
+      display:flex;align-items:center;gap:6px;background:var(--bg);
+      border:1px solid var(--line);border-radius:22px;padding:5px 12px;
+    }
+    .search-mini input{
+      border:0;background:transparent;outline:none;font-size:13px;width:120px;color:var(--ink);
+    }
+    .search-mini input::placeholder{color:var(--muted);}
+    .search-mini button{
+      border:0;background:transparent;color:var(--brand);font-size:15px;display:grid;place-items:center;padding:2px;
+    }
+    .btn-ghost{
+      border:1px solid var(--line);background:#fff;color:var(--brand);
+      font-size:13px;font-weight:600;padding:7px 14px;border-radius:20px;transition:.15s;
+    }
+    .btn-ghost:hover{border-color:var(--brand);background:var(--accent-soft);}
+
+    /* ===== 首屏 ===== */
+    .hero{
+      position:relative;
+      background:
+        radial-gradient(ellipse 55% 80% at 82% 20%,rgba(255,107,138,.18),transparent 60%),
+        radial-gradient(ellipse 45% 70% at 12% 85%,rgba(122,95,212,.2),transparent 60%),
+        linear-gradient(160deg,#fbf8ff 0%,#f0eaff 100%);
+      border-bottom:1px solid var(--line);
+      overflow:hidden;
+    }
+    .hero .wrap{
+      display:grid;grid-template-columns:1.15fr .85fr;gap:32px;
+      padding-top:48px;padding-bottom:48px;align-items:center;
+    }
+    .hero-eyebrow{
+      display:inline-flex;align-items:center;gap:8px;
+      background:#fff;border:1px solid var(--line);border-radius:20px;
+      padding:4px 14px 4px 6px;font-size:12px;font-weight:600;color:var(--brand);
+      box-shadow:var(--shadow-sm);margin-bottom:18px;
+    }
+    .hero-eyebrow span{
+      background:var(--accent);color:#fff;font-size:10px;padding:2px 8px;border-radius:12px;
+    }
+    .hero h1{
+      font-size:clamp(30px,4.4vw,46px);
+      line-height:1.2;
+      font-weight:900;
+      letter-spacing:-.5px;
+      color:var(--brand-deep);
+      margin-bottom:16px;
+    }
+    .hero h1 em{font-style:normal;color:var(--accent);}
+    .hero-lead{
+      font-size:16px;color:var(--ink-soft);max-width:560px;margin-bottom:14px;line-height:1.7;
+    }
+    .hero-meta{
+      display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;color:var(--muted);margin-bottom:24px;
+    }
+    .hero-meta b{color:var(--brand);font-weight:700;}
+    .hero-cta{display:flex;flex-wrap:wrap;gap:12px;}
+    .btn-primary{
+      background:linear-gradient(135deg,#5b3fa8,#7a5fd4);color:#fff;
+      font-size:14px;font-weight:700;padding:11px 24px;border-radius:28px;
+      border:0;box-shadow:0 6px 16px rgba(91,63,168,.32);transition:.18s;
+      display:inline-flex;align-items:center;gap:6px;
+    }
+    .btn-primary:hover{transform:translateY(-1px);box-shadow:0 9px 22px rgba(91,63,168,.4);}
+    .btn-outline{
+      background:#fff;color:var(--brand);border:1.5px solid #d9cff0;
+      font-size:14px;font-weight:700;padding:10px 22px;border-radius:28px;transition:.18s;
+      display:inline-flex;align-items:center;gap:6px;
+    }
+    .btn-outline:hover{border-color:var(--brand);background:#faf7ff;}
+
+    .hero-visual{position:relative;min-height:280px;display:grid;place-items:center;}
+    .hero-art{width:100%;max-width:380px;filter:drop-shadow(0 18px 30px rgba(60,30,120,.18));}
+    .hero-badge{
+      position:absolute;background:#fff;border-radius:14px;padding:10px 14px;
+      box-shadow:var(--shadow);font-size:12px;font-weight:600;color:var(--ink-soft);
+      display:flex;align-items:center;gap:8px;border:1px solid var(--line);
+    }
+    .hero-badge .dot{width:8px;height:8px;border-radius:50%;background:#3ecf8e;}
+    .hero-badge.b1{top:6%;left:-4%;}
+    .hero-badge.b2{bottom:8%;right:-2%;}
+    .hero-badge .num{font-size:16px;font-weight:800;color:var(--brand-deep);}
+
+    /* ===== 三栏主结构 ===== */
+    .portal-main{padding:32px 0 56px;}
+    .portal-grid{
+      display:grid;
+      grid-template-columns:176px minmax(0,1fr) 248px;
+      gap:26px;
+      align-items:start;
+    }
+
+    /* 左栏 */
+    .left-col{position:sticky;top:calc(var(--sticky-offset) + 16px);}
+    .side-card{
+      background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+      padding:16px 14px;box-shadow:var(--shadow-sm);margin-bottom:18px;
+    }
+    .side-title{
+      font-size:12px;font-weight:800;letter-spacing:1.2px;color:var(--muted);
+      text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:6px;
+    }
+    .side-title::before{content:"";width:3px;height:12px;background:var(--accent);border-radius:2px;}
+    .channel-list{list-style:none;display:flex;flex-direction:column;gap:2px;}
+    .channel-list a{
+      display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--ink-soft);
+      padding:7px 9px;border-radius:8px;transition:.15s;font-weight:500;
+    }
+    .channel-list a:hover,.channel-list a.active{background:var(--accent-soft);color:var(--accent);font-weight:700;}
+    .channel-list .ico{width:18px;text-align:center;font-size:14px;opacity:.85;}
+    .tag-cloud{display:flex;flex-wrap:wrap;gap:6px;}
+    .tag-cloud a{
+      font-size:11.5px;color:var(--ink-soft);background:var(--bg);border:1px solid var(--line);
+      padding:3px 9px;border-radius:14px;transition:.15s;
+    }
+    .tag-cloud a:hover{background:var(--brand);color:#fff;border-color:var(--brand);}
+
+    /* 中栏 */
+    .mid-col{min-width:0;}
+    .section{
+      background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);
+      padding:26px 28px;margin-bottom:24px;box-shadow:var(--shadow-sm);
+    }
+    .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:18px;flex-wrap:wrap;}
+    .sec-head h2{font-size:20px;font-weight:800;color:var(--brand-deep);letter-spacing:-.2px;position:relative;padding-left:12px;}
+    .sec-head h2::before{
+      content:"";position:absolute;left:0;top:4px;bottom:4px;width:4px;border-radius:3px;
+      background:linear-gradient(180deg,var(--accent),var(--brand));
+    }
+    .sec-head .sec-sub{font-size:13px;color:var(--muted);}
+    .sec-link{font-size:13px;font-weight:600;color:var(--brand);white-space:nowrap;}
+    .sec-link:hover{color:var(--accent);}
+
+    /* 内容简介 */
+    .intro-text p{font-size:14.5px;color:var(--ink-soft);margin-bottom:12px;line-height:1.75;}
+    .intro-text p:last-child{margin-bottom:0;}
+    .intro-text strong{color:var(--brand-deep);font-weight:700;}
+    .intro-highlight{
+      display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px;
+    }
+    .intro-stat{
+      background:linear-gradient(150deg,#faf7ff,#f1ebff);border:1px solid #e8e0fa;
+      border-radius:var(--radius-sm);padding:12px 14px;
+    }
+    .intro-stat b{display:block;font-size:20px;font-weight:800;color:var(--brand);line-height:1.2;}
+    .intro-stat span{font-size:12px;color:var(--muted);}
+
+    /* 热门卡片 */
+    .card-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+    .content-card{
+      border:1px solid var(--line);border-radius:var(--radius-sm);padding:16px;
+      transition:.18s;display:flex;flex-direction:column;gap:8px;background:#fff;
+    }
+    .content-card:hover{border-color:#cfc2ed;box-shadow:var(--shadow);transform:translateY(-2px);}
+    .card-top{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+    .type-chip{
+      font-size:10.5px;font-weight:700;color:var(--brand);background:#f0eaff;
+      padding:2px 9px;border-radius:12px;letter-spacing:.2px;white-space:nowrap;
+    }
+    .heat{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:3px;white-space:nowrap;}
+    .heat::before{content:"🔥";font-size:11px;}
+    .content-card h3{font-size:15px;font-weight:700;color:var(--ink);line-height:1.4;}
+    .content-card p{font-size:12.5px;color:var(--muted);line-height:1.55;flex:1;}
+    .card-tags{display:flex;flex-wrap:wrap;gap:5px;}
+    .card-tags span{
+      font-size:10.5px;color:var(--ink-soft);background:var(--bg);padding:2px 7px;border-radius:10px;
+    }
+    .card-foot{display:flex;align-items:center;justify-content:space-between;font-size:11px;color:var(--muted);border-top:1px dashed var(--line);padding-top:8px;}
+    .score{color:var(--gold);font-weight:800;}
+
+    /* 动态列表 */
+    .feed-list{display:flex;flex-direction:column;gap:2px;}
+    .feed-item{
+      display:flex;gap:12px;padding:10px 8px;border-radius:8px;transition:.15s;align-items:baseline;
+    }
+    .feed-item:hover{background:#faf7ff;}
+    .feed-time{
+      font-size:11px;color:var(--muted);font-family:var(--font-mono);flex-shrink:0;width:64px;
+    }
+    .feed-body{flex:1;min-width:0;}
+    .feed-body h4{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:1px;}
+    .feed-body p{font-size:12.5px;color:var(--muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+    .feed-type{font-size:10.5px;color:var(--accent);font-weight:700;background:var(--accent-soft);padding:2px 8px;border-radius:10px;flex-shrink:0;}
+
+    /* 分类入口 */
+    .cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+    .cat-item{
+      display:flex;flex-direction:column;gap:3px;padding:12px 12px;border-radius:var(--radius-sm);
+      background:linear-gradient(150deg,#faf8ff,#f3eeff);border:1px solid #ece5fb;transition:.16s;
+    }
+    .cat-item:hover{border-color:#c9b8f0;transform:translateY(-1px);}
+    .cat-item b{font-size:13.5px;color:var(--brand-deep);font-weight:700;}
+    .cat-item span{font-size:11px;color:var(--muted);}
+
+    /* 深度解析 */
+    .deep h3{
+      font-size:16px;font-weight:800;color:var(--brand-deep);margin:20px 0 10px;
+      display:flex;align-items:center;gap:8px;
+    }
+    .deep h3:first-of-type{margin-top:0;}
+    .deep h3 .n{
+      width:22px;height:22px;border-radius:50%;background:var(--brand);color:#fff;
+      font-size:11px;display:grid;place-items:center;font-weight:700;flex-shrink:0;
+    }
+    .deep p{font-size:14px;color:var(--ink-soft);margin-bottom:12px;line-height:1.75;}
+    .deep ul{list-style:none;margin:10px 0 14px;display:flex;flex-direction:column;gap:7px;}
+    .deep li{
+      font-size:13.5px;color:var(--ink-soft);padding-left:18px;position:relative;line-height:1.65;
+    }
+    .deep li::before{content:"◆";position:absolute;left:0;color:var(--accent);font-size:9px;top:6px;}
+    .deep .note-box{
+      background:var(--accent-soft);border-left:3px solid var(--accent);border-radius:0 8px 8px 0;
+      padding:12px 16px;font-size:13px;color:#a83c56;margin:14px 0;
+    }
+
+    /* 体验指南 */
+    .guide-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+    .guide-step{
+      border:1px solid var(--line);border-radius:var(--radius-sm);padding:14px;background:#fdfcff;
+    }
+    .guide-step .step-no{
+      display:inline-block;background:var(--brand);color:#fff;font-size:11px;font-weight:800;
+      border-radius:6px;padding:2px 8px;margin-bottom:8px;
+    }
+    .guide-step h4{font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:4px;}
+    .guide-step p{font-size:12.5px;color:var(--muted);line-height:1.55;}
+
+    /* FAQ */
+    .faq-list{display:flex;flex-direction:column;gap:8px;}
+    .faq-list details{
+      border:1px solid var(--line);border-radius:var(--radius-sm);overflow:hidden;background:#fff;
+    }
+    .faq-list summary{
+      padding:12px 16px;font-size:14px;font-weight:600;color:var(--ink);
+      cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:10px;
+    }
+    .faq-list summary::-webkit-details-marker{display:none;}
+    .faq-list summary::after{
+      content:"＋";font-size:16px;color:var(--brand);font-weight:400;transition:.2s;flex-shrink:0;
+    }
+    .faq-list details[open] summary::after{content:"－";}
+    .faq-list details[open] summary{background:#faf7ff;color:var(--brand-deep);}
+    .faq-answer{padding:0 16px 14px;font-size:13.5px;color:var(--ink-soft);line-height:1.7;}
+
+    /* 评论 */
+    .comment-list{display:flex;flex-direction:column;gap:2px;}
+    .comment-item{display:flex;gap:10px;padding:10px 6px;border-bottom:1px dashed var(--line);}
+    .comment-item:last-child{border-bottom:0;}
+    .avatar{
+      width:30px;height:30px;border-radius:50%;flex-shrink:0;display:grid;place-items:center;
+      font-size:12px;font-weight:800;color:#fff;
+    }
+    .comment-body{flex:1;min-width:0;}
+    .comment-meta{display:flex;align-items:center;gap:8px;margin-bottom:2px;flex-wrap:wrap;}
+    .comment-meta b{font-size:12.5px;color:var(--brand-deep);}
+    .comment-meta time{font-size:10.5px;color:var(--muted);}
+    .comment-meta .like{font-size:10.5px;color:var(--muted);margin-left:auto;}
+    .comment-body p{font-size:12.8px;color:var(--ink-soft);line-height:1.55;}
+
+    /* 资讯 */
+    .news-list{display:flex;flex-direction:column;gap:12px;}
+    .news-item{display:flex;gap:14px;padding-bottom:12px;border-bottom:1px solid var(--line);}
+    .news-item:last-child{border-bottom:0;padding-bottom:0;}
+    .news-date{
+      flex-shrink:0;width:52px;text-align:center;background:var(--bg);border-radius:8px;padding:6px 0;
+      font-family:var(--font-mono);font-size:11px;color:var(--muted);line-height:1.35;
+    }
+    .news-date b{display:block;font-size:17px;color:var(--brand);font-weight:800;}
+    .news-body h4{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:2px;}
+    .news-body p{font-size:12.5px;color:var(--muted);line-height:1.55;}
+
+    /* 相关推荐 */
+    .rec-tags{display:flex;flex-wrap:wrap;gap:8px;}
+    .rec-tags a{
+      font-size:13px;color:var(--ink-soft);background:var(--bg);border:1px solid var(--line);
+      border-radius:20px;padding:6px 14px;transition:.15s;font-weight:500;
+    }
+    .rec-tags a:hover{background:var(--brand);color:#fff;border-color:var(--brand);}
+
+    /* 时间线 */
+    .timeline{position:relative;padding-left:18px;}
+    .timeline::before{content:"";position:absolute;left:4px;top:4px;bottom:4px;width:2px;background:linear-gradient(180deg,var(--accent),var(--brand));border-radius:2px;}
+    .tl-item{position:relative;padding:0 0 16px 12px;}
+    .tl-item:last-child{padding-bottom:0;}
+    .tl-item::before{
+      content:"";position:absolute;left:-18px;top:6px;width:10px;height:10px;border-radius:50%;
+      background:#fff;border:2.5px solid var(--accent);
+    }
+    .tl-item time{font-size:11px;color:var(--accent);font-weight:700;font-family:var(--font-mono);}
+    .tl-item h4{font-size:13.5px;font-weight:700;color:var(--ink);margin:1px 0 2px;}
+    .tl-item p{font-size:12.5px;color:var(--muted);}
+
+    /* 右栏 */
+    .right-col{position:sticky;top:calc(var(--sticky-offset) + 16px);}
+    .toc-list{list-style:none;display:flex;flex-direction:column;gap:1px;}
+    .toc-list a{
+      display:block;font-size:12.5px;color:var(--ink-soft);padding:5px 8px;border-radius:6px;
+      border-left:2px solid transparent;transition:.12s;
+    }
+    .toc-list a:hover{background:var(--accent-soft);color:var(--accent);border-left-color:var(--accent);}
+    .hot-list{list-style:none;counter-reset:hot;display:flex;flex-direction:column;gap:9px;}
+    .hot-list li{counter-increment:hot;display:flex;gap:9px;align-items:flex-start;}
+    .hot-list li::before{
+      content:counter(hot);font-family:var(--font-mono);font-size:11px;font-weight:800;
+      width:19px;height:19px;border-radius:5px;background:var(--bg);color:var(--muted);
+      display:grid;place-items:center;flex-shrink:0;margin-top:2px;
+    }
+    .hot-list li:nth-child(1)::before{background:var(--accent);color:#fff;}
+    .hot-list li:nth-child(2)::before{background:#ffb347;color:#fff;}
+    .hot-list li:nth-child(3)::before{background:var(--gold);color:#fff;}
+    .hot-list a{font-size:12.5px;color:var(--ink-soft);line-height:1.45;display:block;}
+    .hot-list a:hover{color:var(--accent);}
+    .hot-list small{display:block;font-size:10.5px;color:var(--muted);margin-top:1px;}
+
+    .banner-side{
+      background:linear-gradient(160deg,#3b2a6e,#5b3fa8);
+      border-radius:var(--radius);padding:20px 16px;color:#fff;box-shadow:var(--shadow);
+    }
+    .banner-side h4{font-size:15px;font-weight:800;margin-bottom:6px;line-height:1.4;}
+    .banner-side p{font-size:12px;opacity:.82;line-height:1.6;margin-bottom:12px;}
+    .banner-side a{
+      display:inline-block;background:var(--accent);color:#fff;font-size:12px;font-weight:700;
+      padding:6px 16px;border-radius:20px;transition:.15s;
+    }
+    .banner-side a:hover{background:#ff4f75;}
+
+    /* 页尾 */
+    .site-footer{
+      background:#211b36;color:#c9c0e0;padding:40px 0 20px;margin-top:12px;
+    }
+    .footer-grid{
+      display:grid;grid-template-columns:1.4fr repeat(3,1fr);gap:30px;padding-bottom:26px;
+      border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:18px;
+    }
+    .footer-brand .brand-name{color:#fff;font-size:19px;margin-bottom:10px;}
+    .footer-brand p{font-size:12.5px;opacity:.7;line-height:1.7;max-width:280px;}
+    .footer-col h5{font-size:12px;font-weight:800;letter-spacing:1px;color:#fff;margin-bottom:10px;opacity:.9;}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:6px;}
+    .footer-col a{font-size:12.5px;opacity:.68;transition:.15s;}
+    .footer-col a:hover{opacity:1;color:var(--accent);}
+    .footer-bottom{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;font-size:11.5px;opacity:.55;}
+    .footer-bottom .demo-note{font-size:11px;}
+
+    /* 搜索无结果 */
+    .no-result{
+      display:none;padding:18px;text-align:center;color:var(--muted);font-size:13px;
+      background:var(--bg);border-radius:var(--radius-sm);margin-top:10px;
+    }
+
+    /* 响应式 */
+    @media(max-width:1080px){
+      .portal-grid{grid-template-columns:160px minmax(0,1fr);}
+      .right-col{display:none;}
+      .portal-grid{grid-template-areas:"left mid";}
+    }
+    @media(max-width:820px){
+      .portal-grid{grid-template-columns:1fr;gap:18px;}
+      .left-col{position:static;display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+      .left-col .side-card{margin-bottom:0;}
+      .hero .wrap{grid-template-columns:1fr;padding-top:34px;padding-bottom:34px;}
+      .hero-visual{min-height:200px;order:-1;}
+      .hero-art{max-width:260px;}
+      .hero-badge{display:none;}
+      .card-grid{grid-template-columns:1fr;}
+      .cat-grid{grid-template-columns:repeat(2,1fr);}
+      .guide-grid{grid-template-columns:1fr;}
+      .intro-highlight{grid-template-columns:1fr;}
+      .footer-grid{grid-template-columns:1fr 1fr;gap:24px;}
+    }
+    @media(max-width:560px){
+      .wrap{padding:0 14px;}
+      .header-nav{display:none;}
+      .search-mini input{width:80px;}
+      .left-col{grid-template-columns:1fr;}
+      .section{padding:20px 16px;}
+      .footer-grid{grid-template-columns:1fr;}
+      .hero h1{font-size:28px;}
+      .header-actions .btn-ghost{display:none;}
+    }
+  </style>
+</head>
+<body>
+
+<!-- 吸顶公告条 -->
+<div class="announce-bar" id="announce">
+  <div class="wrap">
+    <span class="announce-tag">公告</span>
+    <p>2025 春季同人创作征集开启，漫展资讯频道同步更新本周场次与票务提醒。</p>
+    <a href="/#latest">查看更新 →</a>
+  </div>
+</div>
+
+<!-- 吸顶页头 -->
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="/#top" aria-label="91次元官网首页">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" fill="none">
+          <path d="M6 22 L16 4 L26 22 Z" fill="#ff8fa3" opacity=".95"/>
+          <circle cx="16" cy="24" r="3.2" fill="#ffd166"/>
+          <circle cx="16" cy="10" r="1.6" fill="#fff" opacity=".85"/>
+        </svg>
+      </span>
+      <span class="brand-name">91次元官网</span>
+    </a>
+    <nav class="header-nav" aria-label="主题导航">
+      <a href="/#intro">社区介绍</a>
+      <a href="/#hot">热门内容</a>
+      <a href="/#latest">最新动态</a>
+      <a href="/#cats">分类入口</a>
+      <a href="/#deep">深度解析</a>
+      <a href="/#faq">常见问题</a>
+    </nav>
+    <div class="header-actions">
+      <div class="search-mini" role="search">
+        <input type="search" id="searchInput" placeholder="搜同人/漫展/COS" aria-label="搜索站内内容">
+        <button type="button" id="searchBtn" aria-label="执行搜索">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.2-4.2"/></svg>
+        </button>
+      </div>
+      <button class="btn-ghost" type="button" onclick="document.getElementById('faq').scrollIntoView({behavior:'smooth'})">新手指南</button>
+    </div>
+  </div>
+</header>
+
+<!-- 首屏 -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="hero-eyebrow"><span>二次元社区</span> 同人 · 漫展 · COS · 讨论</span>
+      <h1>91次元官网</h1>
+      <p class="hero-lead">一个围绕动漫同人创作、漫展前线资讯与 COSPLAY 图集展开的二次元内容社区。每天更新可追的连载、可逛的展讯和可参与的讨论。</p>
+      <div class="hero-meta">
+        <span>内容方向 <b>同人 / 漫展 / COS</b></span>
+        <span>更新节奏 <b>每日滚动</b></span>
+        <span>适合人群 <b>追番党 / 创作者 / 逛展人</b></span>
+      </div>
+      <div class="hero-cta">
+        <a class="btn-primary" href="/#hot">
+          浏览热门内容
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a class="btn-outline" href="/#latest">查看今日更新</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <svg class="hero-art" viewBox="0 0 360 300" fill="none">
+        <defs>
+          <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#8a6be0"/><stop offset="1" stop-color="#5b3fa8"/>
+          </linearGradient>
+          <linearGradient id="g2" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ff8fa3"/><stop offset="1" stop-color="#ff6b8a"/>
+          </linearGradient>
+        </defs>
+        <rect x="30" y="40" width="300" height="200" rx="22" fill="#fff" stroke="#e2dcef" stroke-width="2"/>
+        <rect x="30" y="40" width="300" height="48" rx="22" fill="url(#g1)"/>
+        <circle cx="54" cy="64" r="6" fill="#fff" opacity=".7"/>
+        <circle cx="74" cy="64" r="6" fill="#fff" opacity=".45"/>
+        <circle cx="94" cy="64" r="6" fill="#fff" opacity=".3"/>
+        <rect x="56" y="110" width="120" height="14" rx="7" fill="#f0eaff"/>
+        <rect x="56" y="134" width="86" height="10" rx="5" fill="#f7f4fb"/>
+        <rect x="56" y="156" width="200" height="10" rx="5" fill="#f7f4fb"/>
+        <rect x="56" y="176" width="160" height="10" rx="5" fill="#f7f4fb"/>
+        <rect x="56" y="200" width="64" height="22" rx="11" fill="url(#g2)"/>
+        <rect x="130" y="200" width="64" height="22" rx="11" fill="#f0eaff"/>
+        <circle cx="292" cy="196" r="34" fill="#f0eaff"/>
+        <path d="M274 208 L292 176 L310 208 Z" fill="#ff8fa3"/>
+        <circle cx="292" cy="212" r="6" fill="#ffd166"/>
+      </svg>
+      <div class="hero-badge b1"><span class="dot"></span>今日更新 <span class="num">47</span> 条</div>
+      <div class="hero-badge b2">本周漫展 <span class="num">12</span> 场</div>
+    </div>
+  </div>
+</section>
+
+<!-- 三栏主内容 -->
+<main class="portal-main">
+  <div class="wrap">
+    <div class="portal-grid">
+
+      <!-- 左栏 -->
+      <aside class="left-col" aria-label="频道导航与标签索引">
+        <div class="side-card">
+          <div class="side-title">频道导航</div>
+          <ul class="channel-list">
+            <li><a href="/#intro" class="active"><span class="ico">📖</span>社区介绍</a></li>
+            <li><a href="/#hot"><span class="ico">🔥</span>热门同人</a></li>
+            <li><a href="/#latest"><span class="ico">🆕</span>最新动态</a></li>
+            <li><a href="/#cats"><span class="ico">🗂</span>分类入口</a></li>
+            <li><a href="/#deep"><span class="ico">🔍</span>深度解析</a></li>
+            <li><a href="/#guide"><span class="ico">🧭</span>体验指南</a></li>
+            <li><a href="/#faq"><span class="ico">❓</span>常见问题</a></li>
+            <li><a href="/#comments"><span class="ico">💬</span>用户评论</a></li>
+            <li><a href="/#news"><span class="ico">📰</span>相关资讯</a></li>
+            <li><a href="/#rec"><span class="ico">🔖</span>相关推荐</a></li>
+            <li><a href="/#timeline"><span class="ico">🕒</span>社区时间线</a></li>
+          </ul>
+        </div>
+        <div class="side-card">
+          <div class="side-title">热门标签</div>
+          <div class="tag-cloud">
+            <a href="/#hot">悬疑同人</a>
+            <a href="/#hot">都市情感</a>
+            <a href="/#hot">完结短篇</a>
+            <a href="/#latest">漫展返图</a>
+            <a href="/#hot">COS正片</a>
+            <a href="/#deep">同人企划</a>
+            <a href="/#cats">睡前看</a>
+            <a href="/#cats">通勤追</a>
+            <a href="/#faq">更新时间</a>
+            <a href="/#rec">在哪看</a>
+          </div>
+        </div>
+        <div class="side-card">
+          <div class="side-title">快捷筛选</div>
+          <div class="tag-cloud">
+            <a href="/#hot">完结作品</a>
+            <a href="/#hot">连载中</a>
+            <a href="/#latest">本周更新</a>
+            <a href="/#hot">高评分</a>
+            <a href="/#latest">新上架</a>
+          </div>
+        </div>
+      </aside>
+
+      <!-- 中栏 -->
+      <div class="mid-col">
+
+        <!-- 1. 内容简介 -->
+        <section class="section" id="intro">
+          <div class="sec-head">
+            <h2>社区介绍：91次元官网的内容构成</h2>
+            <span class="sec-sub">面向二次元内容消费者的导览</span>
+          </div>
+          <div class="intro-text">
+            <p><strong>91次元官网</strong>是一个围绕二次元文化内容聚合与讨论的社区型门户。页面汇集了动漫同人作品、漫展前线资讯、COSPLAY 图集和社区话题讨论，主要面向习惯追番、喜欢找同人阅读、定期逛展以及关注 COS 创作的二次元爱好者。内容按类型和场景做了清晰分区，方便用户快速定位自己想看的方向。</p>
+            <p>在内容类型上，同人作品覆盖悬疑、都市情感、奇幻冒险等常见方向，既有完结短篇，也有持续更新的连载企划。漫展资讯则聚焦近期场次、票务提醒和返图整理，适合计划逛展或想线上补看展况的用户。COSPLAY 图集以正片和场照为主，配合创作者署名与拍摄信息。所有内容按更新节奏滚动呈现，热门的同人作品和展讯会持续出现在推荐位。</p>
+            <p>对刚接触这个社区的用户来说，可以从“热门同人”了解当前讨论度较高的作品，也可以从“分类入口”按题材或场景筛选。如果关心更新频率，最新动态区会列出近期上新的条目和一句话摘要。想比较不同作品或方向的用户，可以看深度解析和常见问题，那里对同人类型、阅读场景和选择依据做了更具体的说明。</p>
+          </div>
+          <div class="intro-highlight">
+            <div class="intro-stat"><b>1,200+</b><span>同人作品条目</span></div>
+            <div class="intro-stat"><b>86</b><span>本周漫展场次</span></div>
+            <div class="intro-stat"><b>3,400+</b><span>COS 图集与返图</span></div>
+          </div>
+        </section>
+
+        <!-- 2. 热门内容推荐 -->
+        <section class="section" id="hot">
+          <div class="sec-head">
+            <h2>热门同人作品与漫展内容推荐</h2>
+            <a class="sec-link" href="/#rec">更多方向 →</a>
+          </div>
+          <div class="card-grid">
+            <article class="content-card" data-search="雾港来信 悬疑同人 完结短篇 推理 都市">
+              <div class="card-top"><span class="type-chip">悬疑同人</span><span class="heat">2.8万热度</span></div>
+              <h3>《雾港来信》完结悬疑同人</h3>
+              <p>一封没有署名的信牵出旧港三起悬案，推理线与人物关系同步收紧，适合喜欢完结短篇一口气读完的读者。</p>
+              <div class="card-tags"><span>完结短篇</span><span>推理向</span><span>都市悬疑</span></div>
+              <div class="card-foot"><span class="score">9.2</span><span>更新于 03-18 · 共 12 章</span></div>
+            </article>
+            <article class="content-card" data-search="春风不渡 都市情感 连载中 职场 情感">
+              <div class="card-top"><span class="type-chip">都市情感</span><span class="heat">2.1万热度</span></div>
+              <h3>《春风不渡》都市情感连载</h3>
+              <p>以职场重逢为起点的情感长篇，双视角交替推进，更新稳定，适合通勤时段分段追读。</p>
+              <div class="card-tags"><span>连载中</span><span>双视角</span><span>职场情感</span></div>
+              <div class="card-foot"><span class="score">8.8</span><span>更新于 03-20 · 第 34 章</span></div>
+            </article>
+            <article class="content-card" data-search="星轨旅人 奇幻冒险 长篇 世界观 群像">
+              <div class="card-top"><span class="type-chip">奇幻冒险</span><span class="heat">1.9万热度</span></div>
+              <h3>《星轨旅人》奇幻群像长篇</h3>
+              <p>多阵营世界观下的公路式冒险，设定密度较高，适合喜欢慢慢展开世界观的长篇读者。</p>
+              <div class="card-tags"><span>群像</span><span>世界观向</span><span>长篇</span></div>
+              <div class="card-foot"><span class="score">9.0</span><span>更新于 03-17 · 第 58 节</span></div>
+            </article>
+            <article class="content-card" data-search="春日漫展返图 漫展资讯 返图 场照 春季">
+              <div class="card-top"><span class="type-chip">漫展资讯</span><span class="heat">1.6万浏览</span></div>
+              <h3>春日漫展返图与场照整理</h3>
+              <p>整理上周末三城漫展的现场返图、舞台时刻和摊位导览，适合没到现场但想补看展况的用户。</p>
+              <div class="card-tags"><span>漫展返图</span><span>场照</span><span>春季场次</span></div>
+              <div class="card-foot"><span class="score">—</span><span>更新于 03-19 · 图文 46 组</span></div>
+            </article>
+            <article class="content-card" data-search="夜色东京 COS正片 夜景 正片 摄影">
+              <div class="card-top"><span class="type-chip">COS正片</span><span class="heat">1.4万浏览</span></div>
+              <h3>「夜色东京」COS 夜景正片</h3>
+              <p>城市夜景与角色气质结合的一组正片，含拍摄地和道具备注，适合找夜景拍摄参考的创作者。</p>
+              <div class="card-tags"><span>COS正片</span><span>夜景拍摄</span><span>道具参考</span></div>
+              <div class="card-foot"><span class="score">8.6</span><span>更新于 03-16 · 24 张</span></div>
+            </article>
+            <article class="content-card" data-search="第七码头 悬疑同人 连载 推理 港口">
+              <div class="card-top"><span class="type-chip">悬疑同人</span><span class="heat">1.2万热度</span></div>
+              <h3>《第七码头》连载推理同人</h3>
+              <p>港口背景的慢热推理，线索分布细碎，适合喜欢边看边整理时间线的读者追更。</p>
+              <div class="card-tags"><span>连载中</span><span>慢热推理</span><span>港口背景</span></div>
+              <div class="card-foot"><span class="score">8.9</span><span>更新于 03-21 · 第 19 章</span></div>
+            </article>
+          </div>
+        </section>
+
+        <!-- 3. 最新更新 -->
+        <section class="section" id="latest">
+          <div class="sec-head">
+            <h2>最新更新与热门动态</h2>
+            <span class="sec-sub">近 48 小时内容滚动</span>
+          </div>
+          <div class="feed-list">
+            <div class="feed-item"><span class="feed-time">03-21 18:40</span><div class="feed-body"><h4>《春风不渡》第 34 章更新</h4><p>双视角回到主线，新增一段职场对峙，情感线推进放缓但信息量增加。</p></div><span class="feed-type">同人</span></div>
+            <div class="feed-item"><span class="feed-time">03-21 15:12</span><div class="feed-body"><h4>《第七码头》第 19 章更新</h4><p>旧仓库线索与码头排班表对上了时间，推理进入收束阶段。</p></div><span class="feed-type">同人</span></div>
+            <div class="feed-item"><span class="feed-time">03-21 11:05</span><div class="feed-body"><h4>春季漫展第三批场次公布</h4><p>新增两座城市共 5 场，票务信息与场馆交通一并整理。</p></div><span class="feed-type">漫展</span></div>
+            <div class="feed-item"><span class="feed-time">03-20 20:30</span><div class="feed-body"><h4>「夜色东京」COS 正片补图</h4><p>作者追加 6 张夜景构图，附拍摄时间与镜头参数备注。</p></div><span class="feed-type">COS</span></div>
+            <div class="feed-item"><span class="feed-time">03-20 16:18</span><div class="feed-body"><h4>《雾港来信》完结后记发布</h4><p>作者补充案件时间线与人物关系图，方便二刷读者对照。</p></div><span class="feed-type">同人</span></div>
+            <div class="feed-item"><span class="feed-time">03-20 10:02</span><div class="feed-body"><h4>周末同人创作交流主题公布</h4><p>本周主题为“城市与悬疑”，征集短篇与设定稿，参与方式见讨论区。</p></div><span class="feed-type">企划</span></div>
+            <div class="feed-item"><span class="feed-time">03-19 21:44</span><div class="feed-body"><h4>《星轨旅人》第 58 节更新</h4><p>新阵营登场，补完北部路线设定，群像线继续分叉。</p></div><span class="feed-type">同人</span></div>
+            <div class="feed-item"><span class="feed-time">03-19 14:26</span><div class="feed-body"><h4>春日漫展返图整理上线</h4><p>三城 46 组返图按场馆与日期归类，含舞台与摊位分区。</p></div><span class="feed-type">漫展</span></div>
+            <div class="feed-item"><span class="feed-time">03-19 09:10</span><div class="feed-body"><h4>完结短篇专题新增 8 部</h4><p>按悬疑、情感、奇幻三类整理，适合想一次读完的读者。</p></div><span class="feed-type">专题</span></div>
+            <div class="feed-item"><span class="feed-time">03-18 19:55</span><div class="feed-body"><h4>《雾港来信》全 12 章完结</h4><p>终章回收主要伏笔，作者在评论区补充了两处细节说明。</p></div><span class="feed-type">同人</span></div>
+          </div>
+        </section>
+
+        <!-- 4. 分类入口 -->
+        <section class="section" id="cats">
+          <div class="sec-head">
+            <h2>按类型与场景找内容</h2>
+            <span class="sec-sub">8 个常用分类入口</span>
+          </div>
+          <div class="cat-grid">
+            <a class="cat-item" href="/#hot"><b>悬疑同人</b><span>推理向 · 案件线</span></a>
+            <a class="cat-item" href="/#hot"><b>都市情感</b><span>职场 · 双视角</span></a>
+            <a class="cat-item" href="/#hot"><b>奇幻冒险</b><span>群像 · 世界观</span></a>
+            <a class="cat-item" href="/#hot"><b>完结短篇</b><span>一次读完</span></a>
+            <a class="cat-item" href="/#latest"><b>漫展资讯</b><span>场次 · 票务</span></a>
+            <a class="cat-item" href="/#hot"><b>COS正片</b><span>图集 · 拍摄参考</span></a>
+            <a class="cat-item" href="/#latest"><b>本周更新</b><span>追更入口</span></a>
+            <a class="cat-item" href="/#deep"><b>同人企划</b><span>创作 · 交流</span></a>
+          </div>
+        </section>
+
+        <!-- 5. 深度解析 -->
+        <section class="section deep" id="deep">
+          <div class="sec-head">
+            <h2>深度解析：同人内容与漫展资讯怎么选</h2>
+            <span class="sec-sub">类型差异与阅读场景</span>
+          </div>
+
+          <h3><span class="n">1</span>悬疑同人与都市情感的同人阅读差异</h3>
+          <p>悬疑同人通常以案件或谜题为核心，阅读时更强调线索的完整性和回收节奏。适合在相对完整的时间段里连续阅读，比如周末晚间或通勤返程。都市情感同人则更依赖人物关系和情绪推进，章节之间相对独立，适合碎片时间分段追更。两类内容在更新节奏上也有差别，悬疑向作品往往在关键章节前调整更新频率，情感向连载更偏向固定周期。</p>
+          <p>选择时可以先看作品是否完结。完结短篇适合想一次读完、不希望等更的读者；连载作品适合享受讨论和猜测过程的读者。在91次元官网的内容分区里，完结与连载有明确标签，可以按自己的阅读习惯筛选。</p>
+
+          <h3><span class="n">2</span>漫展资讯里哪些信息值得优先看</h3>
+          <p>漫展资讯一般包含场次时间、场馆位置、票务状态和现场返图四类信息。计划到场的用户优先看场次与票务，尤其是开票时间和限购说明；只能线上参与的用户可以重点看返图整理和舞台回顾。返图类内容通常按场馆、日期和摊位分区，适合补看展况或找同好摊位。</p>
+          <ul>
+            <li>场次时间与场馆交通：决定当天行程安排。</li>
+            <li>票务状态与开票提醒：避免错过购票窗口。</li>
+            <li>返图与舞台回顾：适合线上补看和找参考。</li>
+            <li>摊位导览与同人志信息：适合有明确购买目标的用户。</li>
+          </ul>
+          <div class="note-box">如果主要目的是找同人作品，漫展资讯可以作为发现新作者的入口；如果主要目的是逛展，同人作品区则适合提前了解摊位内容。</div>
+
+          <h3><span class="n">3</span>完结短篇与连载作品的选择依据</h3>
+          <p>完结短篇的优势在于结构完整、伏笔回收明确，适合想一次看完、不喜欢等待的读者。连载作品的优势在于讨论空间大、更新期间可以参与社区话题，适合愿意持续追更、喜欢和读者交流的用户。两种形式并不互斥，很多读者会同时追一部连载，再备几部完结短篇。</p>
+          <p>从内容消费角度看，先确认自己的可用阅读时间，再决定选择完结还是连载。通勤时间较短的用户可以优先完结短篇，每章篇幅适中的连载作品也可以分段阅读。喜欢推理和悬疑方向的读者，可以关注完结标签下的作品列表，减少等待成本。</p>
+
+          <h3><span class="n">4</span>COS 正片与场照的使用场景</h3>
+          <p>COS 正片偏向成片展示，通常包含角色、场景、道具和拍摄说明，适合找拍摄参考或欣赏成片效果。场照则更接近现场记录，适合了解漫展氛围和角色还原细节。两类内容在91次元官网的图集区都有对应标签，正片多带拍摄参数备注，场照多按场次归类。</p>
+          <p>如果目的是学习构图和用光，正片参考价值更高；如果目的是了解近期热门角色和现场氛围，场照更直观。部分创作者会在正片下附道具备注和拍摄地信息，对准备拍同类题材的用户比较实用。</p>
+        </section>
+
+        <!-- 6. 体验指南 -->
+        <section class="section" id="guide">
+          <div class="sec-head">
+            <h2>体验指南：从浏览到追更的路径</h2>
+            <span class="sec-sub">页面结构与操作说明</span>
+          </div>
+          <div class="guide-grid">
+            <div class="guide-step"><span class="step-no">01</span><h4>按类型进入内容区</h4><p>从左侧频道导航或分类入口进入悬疑同人、都市情感、完结短篇等方向，卡片上标注了类型和标签。</p></div>
+            <div class="guide-step"><span class="step-no">02</span><h4>用标签与场景筛选</h4><p>热门标签区提供“睡前看”“通勤追”“完结了吗”等场景词，点击可定位到对应内容集合。</p></div>
+            <div class="guide-step"><span class="step-no">03</span><h4>查看更新节奏</h4><p>最新动态区按时间滚动，每条包含内容名称和一句摘要，便于判断是否值得追更。</p></div>
+            <div class="guide-step"><span class="step-no">04</span><h4>收藏与回看</h4><p>页面内的收藏入口用于标记感兴趣的作品或展讯，后续可从个人面板快速回到对应条目。</p></div>
+            <div class="guide-step"><span class="step-no">05</span><h4>移动端适配</h4><p>手机端侧栏收拢为横向导航，正文与卡片单列展示，阅读宽度自动适配屏幕。</p></div>
+            <div class="guide-step"><span class="step-no">06</span><h4>扩展推荐路径</h4><p>从热门卡片进入作品后，可沿相关推荐标签继续发现同类型内容，形成连续浏览。</p></div>
+          </div>
+        </section>
+
+        <!-- 7. FAQ -->
+        <section class="section" id="faq">
+          <div class="sec-head">
+            <h2>常见问题：同人、漫展与内容选择</h2>
+            <span class="sec-sub">按真实搜索问句整理</span>
+          </div>
+          <div class="faq-list">
+            <details>
+              <summary>悬疑同人一般多久更新一次？</summary>
+              <div class="faq-answer">悬疑同人的更新频率因作者而异。连载中的悬疑作品常见为每周或双周更新，关键章节可能调整时间。完结短篇则不受更新周期影响，可以一次读完。页面内每部作品会标注最近更新时间和章节进度，可作为追更参考。</div>
+            </details>
+            <details>
+              <summary>完结短篇和连载作品哪个更适合睡前看？</summary>
+              <div class="faq-answer">睡前阅读更适合节奏平稳、单章篇幅适中的内容。完结短篇可以控制总阅读量，避免追更悬念影响休息；连载作品如果单章信息量不大，也适合分段阅读。悬疑向作品如果情节紧张，睡前阅读可按章节控制节奏。</div>
+            </details>
+            <details>
+              <summary>漫展资讯里的场次信息包括哪些内容？</summary>
+              <div class="faq-answer">通常包括展会名称、举办日期、场馆位置、开票时间与票务状态，部分场次附交通提示和摊位导览。返图整理会按场馆和日期归类，方便线上补看。计划到场的用户建议优先确认票务与场馆交通信息。</div>
+            </details>
+            <details>
+              <summary>COS 正片和场照有什么区别？</summary>
+              <div class="faq-answer">COS 正片是经过拍摄和后期处理的成片，通常带角色、场景和拍摄说明，适合找参考或欣赏成片效果。场照是漫展现场记录，更侧重氛围和即时还原。两类内容在图集区有不同标签，可以按需求浏览。</div>
+            </details>
+            <details>
+              <summary>在哪看同人作品和漫展返图？</summary>
+              <div class="faq-answer">同人作品集中在热门同人与分类入口区域，按悬疑、都市情感、奇幻等方向归类。漫展返图在最新动态和漫展资讯分类下，按场次日期整理。通过左侧频道导航或顶部搜索框可以快速定位。</div>
+            </details>
+            <details>
+              <summary>91次元官网的内容适合什么人看？</summary>
+              <div class="faq-answer">主要面向追番、找同人阅读、关注漫展资讯和 COS 创作的二次元爱好者。想找完结短篇的读者可以看完结标签，计划逛展的用户可以关注漫展资讯，喜欢角色图集的用户可以浏览 COS 正片分类。内容按类型和场景做了分区，方便不同需求的用户取用。</div>
+            </details>
+          </div>
+        </section>
+
+        <!-- 8. 用户评论 -->
+        <section class="section" id="comments">
+          <div class="sec-head">
+            <h2>用户评论</h2>
+            <span class="sec-sub">来自社区读者的真实感反馈</span>
+          </div>
+          <div class="comment-list">
+            <div class="comment-item"><div class="avatar" style="background:#5b3fa8">夜</div><div class="comment-body"><div class="comment-meta"><b>夜航星</b><time>03-21 19:02</time><span class="like">👍 24</span></div><p>《雾港来信》一口气看完了，伏笔收得比预想干净，完结短篇确实适合周末刷。</p></div></div>
+            <div class="comment-item"><div class="avatar" style="background:#ff6b8a">春</div><div class="comment-body"><div class="comment-meta"><b>春日野</b><time>03-21 17:40</time><span class="like">👍 18</span></div><p>漫展返图整理得挺细，场馆和摊位分开标了，没去现场也能看个大概。</p></div></div>
+            <div class="comment-item"><div class="avatar" style="background:#7a5fd4">纸</div><div class="comment-body"><div class="comment-meta"><b>纸飞机</b><time>03-21 15:33</time><span class="like">👍 12</span></div><p>都市情感那本连载节奏有点慢，不过双视角写得还算自然，通勤路上看看刚好。</p></div></div>
+            <div class="comment-item"><div class="avatar" style="background:#3ecf8e">小</div><div class="comment-body"><div class="comment-meta"><b>小满</b><time>03-21 12:08</time><span class="like">👍 9</span></div><p>COS 夜景那组正片的道具备注很实用，拍同类题材可以直接参考。</p></div></div>
+            <div class="comment-item"><div class="avatar" style="background:#f5b800">橘</div><div class="comment-body"><div class="comment-meta"><b>橘子汽水</b><time>03-20 22:17</time><span class="like">👍 15</span></div><p>希望完结短篇专题能再多收一点奇幻方向，悬疑类的已经快看完了。</p></div></div>
+            <div class="comment-item"><div class="avatar" style="background:#5b3fa8">星</div><div class="comment-body"><div class="comment-meta"><b>星轨读者</b><time>03-20 20:45</time><span class="like">👍 7</span></div><p>《星轨旅人》世界观展开得慢，但群像线确实稳，适合慢慢追。</p></div></div>
+            <div class="comment-item"><div class="avatar" style="background:#ff6b8a">漫</div><div class="comment-body"><div class="comment-meta"><b>漫步云端</b><time>03-20 18:30</time><span class="like">👍 11</span></div><p>春季漫展的票务提醒来得及时，差点错过开票时间。</p></div></div>
+            <div class="comment-item"><div class="avatar" style="background:#7a5fd4">深</div><div class="comment-body"><div class="comment-meta"><b>深海鱼</b><time>03-20 14:12</time><span class="like">👍 5</span></div><p>第七码头的线索有点碎，边看边记时间线会顺很多，慢热推理就是这样。</p></div></div>
+            <div class="comment-item"><div class="avatar" style="background:#3ecf8e">柠</div><div class="comment-body"><div class="comment-meta"><b>柠檬不酸</b><time>03-20 11:05</time><span class="like">👍 8</span></div><p>分类入口挺清楚的，悬疑和都市情感直接分开，不用在一堆标签里翻。</p></div></div>
+            <div class="comment-item"><div class="avatar" style="background:#f5b800">黄</div><div class="comment-body"><div class="comment-meta"><b>黄昏列车</b><time>03-19 23:48</time><span class="like">👍 6</span></div><p>场照比正片更接近现场感觉，有些角色还原得挺惊喜。</p></div></div>
+            <div class="comment-item"><div class="avatar" style="background:#5b3fa8">阿</div><div class="comment-body"><div class="comment-meta"><b>阿岚</b><time>03-19 21:20</time><span class="like">👍 3</span></div><p>同人企划的征集主题挺有意思，城市与悬疑这个方向可以试试。</p></div></div>
+            <div class="comment-item"><div class="avatar" style="background:#ff6b8a">雾</div><div class="comment-body"><div class="comment-meta"><b>雾岛听风</b><time>03-19 19:04</time><span class="like">👍 14</span></div><p>完结短篇标签做得不错，省得点进去才发现还在连载。</p></div></div>
+            <div class="comment-item"><div class="avatar" style="background:#7a5fd4">南</div><div class="comment-body"><div class="comment-meta"><b>南岸</b><time>03-19 16:37</time><span class="like">👍 4</span></div><p>希望热门卡片能标一下字数，选完结短篇时比较好判断阅读时长。</p></div></div>
+            <div class="comment-item"><div class="avatar" style="background:#3ecf8e">早</div><div class="comment-body"><div class="comment-meta"><b>早川</b><time>03-19 10:22</time><span class="like">👍 9</span></div><p>漫展场照按日期分得清楚，补看上周的展况很方便。</p></div></div>
+          </div>
+        </section>
+
+        <!-- 9. 相关资讯 -->
+        <section class="section" id="news">
+          <div class="sec-head">
+            <h2>相关资讯</h2>
+            <span class="sec-sub">同人创作与漫展前线</span>
+          </div>
+          <div class="news-list">
+            <div class="news-item"><div class="news-date">03月<b>21</b></div><div class="news-body"><h4>春季同人创作征集启动，主题聚焦“城市与悬疑”</h4><p>征集面向短篇与设定稿，参与者可围绕城市空间展开悬疑叙事，截稿时间与提交方式已在讨论区公布。</p></div></div>
+            <div class="news-item"><div class="news-date">03月<b>20</b></div><div class="news-body"><h4>三城漫展场次更新，周末票务进入倒计时</h4><p>新增场次集中在三月下旬，场馆交通与开票提醒已整理，计划到场的用户可以提前核对行程。</p></div></div>
+            <div class="news-item"><div class="news-date">03月<b>19</b></div><div class="news-body"><h4>完结短篇专题新增八部作品，悬疑方向占半数</h4><p>专题按悬疑、情感、奇幻分类，方便想一次读完的读者按类型挑选。</p></div></div>
+            <div class="news-item"><div class="news-date">03月<b>18</b></div><div class="news-body"><h4>《雾港来信》完结，作者补充案件时间线</h4><p>后记中包含人物关系图与案件时间线，适合二刷读者对照理解。</p></div></div>
+            <div class="news-item"><div class="news-date">03月<b>17</b></div><div class="news-body"><h4>COS 夜景拍摄参考合集更新，附镜头与道具备注</h4><p>合集收录近期夜景正片与场照，对构图、用光和道具准备做了简要说明。</p></div></div>
+            <div class="news-item"><div class="news-date">03月<b>16</b></div><div class="news-body"><h4>社区讨论区开放同人企划交流主题</h4><p>本周交流主题围绕群像设定与多阵营叙事展开，适合正在筹备长篇的作者参与。</p></div></div>
+          </div>
+        </section>
+
+        <!-- 10. 相关推荐 -->
+        <section class="section" id="rec">
+          <div class="sec-head">
+            <h2>相关推荐：可搜索的内容方向</h2>
+            <span class="sec-sub">按类型与阅读场景延伸</span>
+          </div>
+          <div class="rec-tags">
+            <a href="/#hot">悬疑同人完结短篇</a>
+            <a href="/#hot">都市情感连载推荐</a>
+            <a href="/#hot">奇幻群像长篇</a>
+            <a href="/#latest">本周漫展场次</a>
+            <a href="/#hot">COS 夜景正片</a>
+            <a href="/#deep">同人企划交流</a>
+            <a href="/#faq">更新时间与追更</a>
+            <a href="/#rec">睡前阅读清单</a>
+          </div>
+        </section>
+
+        <!-- 11. 社区时间线 -->
+        <section class="section" id="timeline">
+          <div class="sec-head">
+            <h2>社区时间线：近期内容节奏</h2>
+            <span class="sec-sub">从征集到上新的推进</span>
+          </div>
+          <div class="timeline">
+            <div class="tl-item"><time>03-21</time><h4>《春风不渡》《第七码头》同日更新</h4><p>情感线与推理线各推进一步，评论区讨论集中在人物动机上。</p></div>
+            <div class="tl-item"><time>03-20</time><h4>春季漫展第三批场次公布</h4><p>票务状态与场馆交通同步整理，返图区开始收录现场图组。</p></div>
+            <div class="tl-item"><time>03-19</time><h4>春日漫展返图上线</h4><p>三城 46 组返图按场馆与日期归类，舞台与摊位分区呈现。</p></div>
+            <div class="tl-item"><time>03-18</time><h4>《雾港来信》完结</h4><p>全 12 章收束，作者发布后记补充时间线与人物关系。</p></div>
+            <div class="tl-item"><time>03-17</time><h4>COS 夜景拍摄参考合集更新</h4><p>新增镜头参数与道具备注，适合准备同类拍摄的用户参考。</p></div>
+            <div class="tl-item"><time>03-16</time><h4>同人企划交流主题开放</h4><p>本周主题围绕群像设定与多阵营叙事，参与者可提交设定稿。</p></div>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- 右栏 -->
+      <aside class="right-col" aria-label="辅助阅读与热门条目">
+        <div class="side-card">
+          <div class="side-title">本页目录</div>
+          <ul class="toc-list">
+            <li><a href="/#intro">社区介绍</a></li>
+            <li><a href="/#hot">热门同人作品</a></li>
+            <li><a href="/#latest">最新更新动态</a></li>
+            <li><a href="/#cats">类型与场景分类</a></li>
+            <li><a href="/#deep">深度解析</a></li>
+            <li><a href="/#guide">体验指南</a></li>
+            <li><a href="/#faq">常见问题</a></li>
+            <li><a href="/#comments">用户评论</a></li>
+            <li><a href="/#news">相关资讯</a></li>
+            <li><a href="/#rec">相关推荐</a></li>
+            <li><a href="/#timeline">社区时间线</a></li>
+          </ul>
+        </div>
+        <div class="side-card">
+          <div class="side-title">热门条目</div>
+          <ol class="hot-list">
+            <li><a href="/#hot">《雾港来信》完结悬疑同人<small>2.8 万热度 · 9.2 分</small></a></li>
+            <li><a href="/#hot">《春风不渡》都市情感连载<small>2.1 万热度 · 8.8 分</small></a></li>
+            <li><a href="/#hot">《星轨旅人》奇幻群像长篇<small>1.9 万热度 · 9.0 分</small></a></li>
+            <li><a href="/#latest">春日漫展返图与场照整理<small>1.6 万浏览</small></a></li>
+            <li><a href="/#hot">「夜色东京」COS 夜景正片<small>1.4 万浏览 · 8.6 分</small></a></li>
+          </ol>
+        </div>
+        <div class="banner-side">
+          <h4>春季同人创作征集</h4>
+          <p>围绕“城市与悬疑”提交短篇或设定稿，与社区作者一起交流叙事结构。</p>
+          <a href="/#deep">了解参与方向 →</a>
+        </div>
+        <div class="side-card" style="margin-top:18px;">
+          <div class="side-title">延伸阅读</div>
+          <ul class="toc-list">
+            <li><a href="/#deep">悬疑同人与情感同人的阅读差异</a></li>
+            <li><a href="/#deep">漫展资讯优先看哪些信息</a></li>
+            <li><a href="/#deep">完结短篇与连载的选择依据</a></li>
+            <li><a href="/#guide">移动端追更路径说明</a></li>
+          </ul>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+</main>
+
+<!-- 页尾 -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand-name">91次元官网</div>
+        <p>围绕动漫同人、漫展资讯与 COSPLAY 图集的二次元内容社区，为追番、找同人和逛展的用户提供分类清晰的内容入口。</p>
+      </div>
+      <div class="footer-col">
+        <h5>内容频道</h5>
+        <ul>
+          <li><a href="/#hot">热门同人</a></li>
+          <li><a href="/#latest">最新动态</a></li>
+          <li><a href="/#cats">分类入口</a></li>
+          <li><a href="/#deep">深度解析</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>阅读帮助</h5>
+        <ul>
+          <li><a href="/#guide">体验指南</a></li>
+          <li><a href="/#faq">常见问题</a></li>
+          <li><a href="/#comments">用户评论</a></li>
+          <li><a href="/#rec">相关推荐</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>社区资讯</h5>
+        <ul>
+          <li><a href="/#news">相关资讯</a></li>
+          <li><a href="/#timeline">社区时间线</a></li>
+          <li><a href="/#intro">社区介绍</a></li>
+          <li><a href="/#top">返回顶部</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 91次元官网 · 二次元内容社区示例门户</span>
+      <span class="demo-note">部分内容为示例数据，仅用于展示页面结构。</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var input = document.getElementById('searchInput');
+    var btn = document.getElementById('searchBtn');
+    var cards = document.querySelectorAll('.content-card');
+    var noResult = document.createElement('div');
+    noResult.className = 'no-result';
+    noResult.textContent = '没有找到匹配的内容，试试“悬疑”“漫展”或“COS”等关键词。';
+    var hotSection = document.getElementById('hot');
+    hotSection.querySelector('.card-grid').after(noResult);
+
+    function doSearch(){
+      var q = input.value.trim().toLowerCase();
+      var visible = 0;
+      cards.forEach(function(card){
+        var text = (card.getAttribute('data-search') || '') + ' ' + card.textContent;
+        var match = q === '' || text.toLowerCase().indexOf(q) !== -1;
+        card.style.display = match ? '' : 'none';
+        if(match) visible++;
+      });
+      noResult.style.display = (visible === 0 && q !== '') ? 'block' : 'none';
+    }
+
+    btn.addEventListener('click', doSearch);
+    input.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){ e.preventDefault(); doSearch(); }
+    });
+    input.addEventListener('input', function(){
+      if(input.value.trim() === '') doSearch();
+    });
+  })();
+</script>
+
+</body>
+                                                                </html>
