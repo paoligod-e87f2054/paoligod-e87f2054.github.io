@@ -1,0 +1,972 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>91今日大乱斗-新手阵容搭配_每日对战玩法_英雄强度对比</title>
+<meta name="description" content="91今日大乱斗是每日更新的多人对战玩法聚集地，提供新手阵容搭配、每日对战玩法解析与英雄强度对比，适合想快速上手乱斗模式、研究阵容克制与提升胜率的玩家参考。">
+<meta name="keywords" content="乱斗阵容搭配,每日对战玩法,英雄强度对比,多人乱斗模式,新手进阶攻略">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23161826'/%3E%3Cpath d='M14 40 L26 20 L34 32 L42 22 L52 42 Z' fill='%23ff7a3d'/%3E%3Ccircle cx='22' cy='46' r='4' fill='%2338d6c9'/%3E%3Ccircle cx='44' cy='48' r='3' fill='%23ffd166'/%3E%3C/svg%3E">
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+<style>
+:root{
+  --bg:#0f1220;
+  --bg-soft:#161a2c;
+  --panel:#1b2038;
+  --panel-2:#222845;
+  --line:#2e3557;
+  --line-soft:#262c49;
+  --text:#e8ebf7;
+  --text-2:#aab2d0;
+  --text-3:#7c86a8;
+  --orange:#ff7a3d;
+  --orange-soft:#ffb08a;
+  --teal:#38d6c9;
+  --yellow:#ffd166;
+  --purple:#9b8cff;
+  --radius:14px;
+  --radius-sm:9px;
+  --shadow:0 8px 28px rgba(0,0,0,.35);
+  --sticky-h:96px;
+  --font:"PingFang SC","Microsoft YaHei","Hiragino Sans GB",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:
+    radial-gradient(900px 420px at 12% -8%, rgba(255,122,61,.16), transparent 60%),
+    radial-gradient(760px 380px at 92% 0%, rgba(56,214,201,.12), transparent 62%),
+    var(--bg);
+  color:var(--text);
+  font-family:var(--font);
+  font-size:15px;
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4{margin:0;line-height:1.35;font-weight:700;}
+p{margin:0 0 10px;}
+ul,ol{margin:0 0 10px;padding-left:20px;}
+li{margin-bottom:6px;}
+button{font-family:inherit;cursor:pointer;}
+:focus-visible{outline:2px solid var(--teal);outline-offset:2px;border-radius:4px;}
+
+/* ============ 吸顶公告条 + 页头 ============ */
+.sticky-top{
+  position:sticky;top:0;z-index:60;
+}
+.notice-bar{
+  background:linear-gradient(90deg,#ff7a3d,#ff9a5c 45%,#ffd166);
+  color:#1a1208;
+  font-size:13px;
+  font-weight:600;
+  letter-spacing:.2px;
+}
+.notice-inner{
+  max-width:1360px;margin:0 auto;padding:7px 20px;
+  display:flex;align-items:center;gap:10px;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.notice-dot{
+  width:7px;height:7px;border-radius:50%;background:#1a1208;flex:0 0 auto;
+  animation:pulse 1.8s infinite;
+}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.25;}}
+.site-header{
+  background:rgba(15,18,32,.92);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line);
+  box-shadow:0 6px 22px rgba(0,0,0,.3);
+}
+.header-inner{
+  max-width:1360px;margin:0 auto;padding:12px 20px;
+  display:flex;align-items:center;gap:22px;flex-wrap:wrap;
+}
+.brand{display:flex;align-items:center;gap:11px;flex:0 0 auto;}
+.brand-mark{width:42px;height:42px;flex:0 0 auto;}
+.brand-text{display:flex;flex-direction:column;line-height:1.2;}
+.brand-name{font-size:20px;font-weight:800;letter-spacing:.5px;color:#fff;}
+.brand-sub{font-size:11px;color:var(--text-3);letter-spacing:1.5px;text-transform:uppercase;}
+.header-nav{display:flex;gap:6px;flex-wrap:wrap;flex:1 1 auto;}
+.header-nav a{
+  font-size:13.5px;color:var(--text-2);padding:6px 11px;border-radius:8px;
+  transition:.18s;white-space:nowrap;
+}
+.header-nav a:hover{color:#fff;background:var(--panel-2);}
+.header-actions{display:flex;align-items:center;gap:10px;flex:0 0 auto;}
+.search-box{
+  display:flex;align-items:center;gap:6px;
+  background:var(--panel);border:1px solid var(--line);border-radius:9px;
+  padding:4px 6px 4px 11px;
+}
+.search-box input{
+  background:transparent;border:0;color:var(--text);font-size:13px;width:132px;outline:none;
+}
+.search-box input::placeholder{color:var(--text-3);}
+.search-box button{
+  background:var(--orange);border:0;color:#1a1208;font-weight:700;font-size:12px;
+  padding:5px 10px;border-radius:6px;
+}
+.btn-primary{
+  background:linear-gradient(135deg,var(--orange),#ff9a5c);
+  color:#1a1208;font-weight:800;font-size:13px;padding:8px 16px;border-radius:9px;border:0;
+  display:inline-flex;align-items:center;gap:6px;
+}
+
+/* ============ 首屏 ============ */
+.hero{
+  position:relative;overflow:hidden;
+  border-bottom:1px solid var(--line);
+}
+.hero-inner{
+  max-width:1360px;margin:0 auto;padding:40px 20px 44px;
+  display:grid;grid-template-columns:1.15fr .85fr;gap:38px;align-items:center;
+}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:7px;
+  font-size:12px;font-weight:700;letter-spacing:1px;color:var(--teal);
+  border:1px solid rgba(56,214,201,.4);border-radius:20px;padding:4px 13px;margin-bottom:16px;
+  background:rgba(56,214,201,.08);
+}
+.hero h1{
+  font-size:clamp(30px,4.2vw,50px);
+  letter-spacing:1px;
+  background:linear-gradient(100deg,#fff 20%,var(--orange-soft) 62%,var(--yellow));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin-bottom:16px;
+}
+.hero-desc{font-size:15px;color:var(--text-2);max-width:560px;margin-bottom:20px;}
+.hero-meta{display:flex;gap:26px;flex-wrap:wrap;margin-bottom:24px;}
+.hero-meta div{font-size:12.5px;color:var(--text-3);}
+.hero-meta strong{display:block;font-size:21px;color:var(--orange);font-weight:800;}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-ghost{
+  background:transparent;border:1px solid var(--line);color:var(--text-2);
+  font-size:13px;font-weight:600;padding:9px 18px;border-radius:9px;display:inline-flex;align-items:center;gap:6px;
+  transition:.18s;
+}
+.btn-ghost:hover{border-color:var(--teal);color:var(--teal);}
+.hero-visual{position:relative;display:flex;justify-content:center;}
+.hero-visual svg{width:100%;max-width:420px;height:auto;filter:drop-shadow(0 12px 30px rgba(255,122,61,.18));}
+
+/* ============ 三栏布局 ============ */
+.layout{
+  max-width:1360px;margin:0 auto;padding:30px 20px 10px;
+  display:grid;grid-template-columns:180px minmax(0,1fr) 250px;gap:26px;
+  align-items:start;
+}
+.col-left,.col-right{position:sticky;top:calc(var(--sticky-h) + 14px);align-self:start;}
+.panel{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:16px;
+  margin-bottom:18px;
+}
+.panel-title{
+  font-size:12px;font-weight:800;letter-spacing:1.4px;color:var(--text-3);
+  text-transform:uppercase;margin-bottom:12px;display:flex;align-items:center;gap:7px;
+}
+.panel-title::before{content:"";width:3px;height:13px;border-radius:2px;background:var(--orange);}
+.channel-list{list-style:none;padding:0;margin:0;}
+.channel-list li{margin-bottom:3px;}
+.channel-list a{
+  display:flex;align-items:center;justify-content:space-between;gap:6px;
+  font-size:13.5px;color:var(--text-2);padding:7px 9px;border-radius:7px;transition:.16s;
+}
+.channel-list a:hover{background:var(--panel-2);color:#fff;}
+.channel-list .cnt{font-size:11px;color:var(--text-3);}
+.tag-cloud{display:flex;flex-wrap:wrap;gap:7px;}
+.tag-cloud a{
+  font-size:12px;color:var(--text-2);background:var(--panel-2);
+  border:1px solid var(--line-soft);border-radius:20px;padding:3px 10px;transition:.16s;
+}
+.tag-cloud a:hover{color:var(--teal);border-color:var(--teal);}
+
+/* 中栏板块 */
+.block{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:22px 24px;
+  margin-bottom:20px;
+  scroll-margin-top:calc(var(--sticky-h) + 16px);
+}
+.block-head{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:16px;flex-wrap:wrap;}
+.block-head h2{font-size:19px;letter-spacing:.4px;}
+.block-head h2 span{color:var(--orange);}
+.block-sub{font-size:12.5px;color:var(--text-3);}
+.intro-text{font-size:14.5px;color:var(--text-2);line-height:1.85;}
+.intro-text strong{color:var(--text);}
+.intro-lead{color:var(--text);font-size:15px;}
+
+/* 热门卡片 */
+.card-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;}
+.card{
+  background:var(--panel-2);border:1px solid var(--line-soft);border-radius:var(--radius-sm);
+  padding:14px 15px;transition:.18s;display:flex;flex-direction:column;gap:8px;
+}
+.card:hover{border-color:rgba(255,122,61,.55);transform:translateY(-2px);}
+.card h3{font-size:14.5px;color:#fff;}
+.card .type{
+  font-size:11px;font-weight:700;color:#1a1208;background:var(--orange);
+  border-radius:4px;padding:1px 7px;align-self:flex-start;
+}
+.card p{font-size:12.8px;color:var(--text-2);margin:0;line-height:1.6;}
+.card-tags{display:flex;flex-wrap:wrap;gap:5px;}
+.card-tags span{font-size:11px;color:var(--teal);background:rgba(56,214,201,.1);border-radius:4px;padding:1px 7px;}
+.card-foot{display:flex;gap:14px;font-size:11.5px;color:var(--text-3);border-top:1px dashed var(--line-soft);padding-top:8px;margin-top:auto;}
+.card-foot b{color:var(--yellow);font-weight:700;}
+
+/* 最新更新列表 */
+.update-list{list-style:none;padding:0;margin:0;}
+.update-list li{
+  display:grid;grid-template-columns:82px minmax(0,1fr);gap:12px;
+  padding:9px 0;border-bottom:1px dashed var(--line-soft);font-size:13.5px;
+}
+.update-list li:last-child{border-bottom:0;}
+.update-list time{color:var(--orange-soft);font-size:12px;font-weight:600;}
+.update-list .u-name{color:var(--text);font-weight:600;}
+.update-list .u-desc{color:var(--text-3);font-size:12.5px;display:block;}
+
+/* 分类入口 */
+.cat-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:11px;}
+.cat{
+  background:var(--panel-2);border:1px solid var(--line-soft);border-radius:var(--radius-sm);
+  padding:13px 12px;text-align:center;transition:.17s;
+}
+.cat:hover{border-color:var(--purple);background:#262c4d;}
+.cat b{display:block;font-size:13.5px;color:#fff;margin-bottom:3px;}
+.cat small{font-size:11px;color:var(--text-3);}
+
+/* 深度解析 */
+.deep h3{font-size:15.5px;color:var(--orange-soft);margin:20px 0 9px;padding-left:11px;border-left:3px solid var(--orange);}
+.deep h3:first-child{margin-top:0;}
+.deep p{font-size:14px;color:var(--text-2);line-height:1.85;}
+.deep ul{font-size:13.8px;color:var(--text-2);}
+.deep li::marker{color:var(--teal);}
+.deep .callout{
+  background:rgba(56,214,201,.07);border-left:3px solid var(--teal);
+  border-radius:0 8px 8px 0;padding:11px 14px;font-size:13.5px;color:var(--text-2);margin:14px 0;
+}
+
+/* 体验指南 */
+.steps{counter-reset:step;list-style:none;padding:0;margin:0;display:grid;gap:11px;}
+.steps li{
+  counter-increment:step;position:relative;padding:12px 14px 12px 50px;
+  background:var(--panel-2);border-radius:var(--radius-sm);border:1px solid var(--line-soft);
+  font-size:13.5px;color:var(--text-2);
+}
+.steps li::before{
+  content:counter(step);position:absolute;left:14px;top:12px;
+  width:24px;height:24px;border-radius:7px;background:linear-gradient(135deg,var(--orange),#ff9a5c);
+  color:#1a1208;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;
+}
+.steps b{color:#fff;}
+
+/* FAQ */
+.faq details{
+  border:1px solid var(--line-soft);border-radius:var(--radius-sm);margin-bottom:9px;
+  background:var(--panel-2);overflow:hidden;
+}
+.faq summary{
+  list-style:none;cursor:pointer;padding:12px 16px;font-size:14px;font-weight:600;color:var(--text);
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+}
+.faq summary::-webkit-details-marker{display:none;}
+.faq summary::after{content:"+";color:var(--orange);font-weight:800;font-size:17px;line-height:1;}
+.faq details[open] summary::after{content:"−";}
+.faq details[open] summary{color:var(--orange-soft);}
+.faq .ans{padding:0 16px 13px;font-size:13.5px;color:var(--text-2);}
+
+/* 评论 */
+.comment-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px;}
+.comment{
+  background:var(--panel-2);border:1px solid var(--line-soft);border-radius:var(--radius-sm);
+  padding:11px 13px;font-size:13px;color:var(--text-2);
+}
+.comment .who{display:flex;align-items:center;gap:8px;margin-bottom:5px;}
+.avatar{
+  width:24px;height:24px;border-radius:50%;flex:0 0 auto;
+  display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:800;color:#1a1208;
+}
+.comment .nick{font-size:12.5px;font-weight:700;color:var(--text);}
+.comment .stars{font-size:10.5px;color:var(--yellow);margin-left:auto;letter-spacing:1px;}
+
+/* 资讯 */
+.news-list{list-style:none;padding:0;margin:0;}
+.news-list li{padding:11px 0;border-bottom:1px dashed var(--line-soft);}
+.news-list li:last-child{border-bottom:0;}
+.news-list .n-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;}
+.news-list .n-title{font-size:14px;font-weight:600;color:var(--text);}
+.news-list time{font-size:11.5px;color:var(--text-3);}
+.news-list p{font-size:12.8px;color:var(--text-3);margin:3px 0 0;}
+
+/* 相关推荐 */
+.rec-tags{display:flex;flex-wrap:wrap;gap:9px;}
+.rec-tags a{
+  font-size:13px;color:var(--text-2);background:var(--panel-2);
+  border:1px solid var(--line-soft);border-radius:9px;padding:7px 13px;transition:.16s;
+}
+.rec-tags a:hover{color:var(--orange-soft);border-color:var(--orange);}
+
+/* 趋势观察 */
+.trend-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
+.trend{
+  background:linear-gradient(160deg,var(--panel-2),#1d2239);
+  border:1px solid var(--line-soft);border-radius:var(--radius-sm);padding:14px;
+}
+.trend b{display:block;font-size:14px;color:#fff;margin-bottom:5px;}
+.trend span{font-size:12.3px;color:var(--text-3);line-height:1.6;}
+.trend .up{color:var(--teal);font-weight:700;font-size:12px;}
+
+/* 右栏 */
+.rank-list{list-style:none;padding:0;margin:0;counter-reset:rank;}
+.rank-list li{
+  counter-increment:rank;display:flex;gap:9px;align-items:flex-start;
+  padding:7px 0;border-bottom:1px dashed var(--line-soft);font-size:13px;
+}
+.rank-list li:last-child{border-bottom:0;}
+.rank-list li::before{
+  content:counter(rank);flex:0 0 auto;width:18px;height:18px;border-radius:5px;
+  background:var(--panel-2);color:var(--text-3);font-size:11px;font-weight:800;
+  display:flex;align-items:center;justify-content:center;margin-top:2px;
+}
+.rank-list li:nth-child(-n+3)::before{background:var(--orange);color:#1a1208;}
+.rank-list a{color:var(--text-2);line-height:1.5;}
+.rank-list a:hover{color:var(--orange-soft);}
+.toc{list-style:none;padding:0;margin:0;}
+.toc li{margin-bottom:2px;}
+.toc a{display:block;font-size:13px;color:var(--text-2);padding:5px 8px;border-radius:6px;border-left:2px solid transparent;}
+.toc a:hover{background:var(--panel-2);color:var(--teal);border-left-color:var(--teal);}
+.side-note{font-size:12.3px;color:var(--text-3);line-height:1.7;}
+.side-note b{color:var(--text-2);}
+
+/* 页尾 */
+.site-footer{
+  margin-top:34px;border-top:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(22,26,44,.4),rgba(15,18,32,.9));
+}
+.footer-inner{max-width:1360px;margin:0 auto;padding:34px 20px 22px;}
+.footer-top{display:grid;grid-template-columns:1.4fr 2.4fr;gap:34px;margin-bottom:26px;}
+.footer-brand .brand-name{font-size:19px;}
+.footer-brand p{font-size:13px;color:var(--text-3);margin-top:10px;max-width:320px;}
+.footer-groups{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;}
+.footer-groups h4{font-size:12.5px;color:var(--text-2);letter-spacing:1px;margin-bottom:9px;}
+.footer-groups a{display:block;font-size:12.5px;color:var(--text-3);padding:2.5px 0;}
+.footer-groups a:hover{color:var(--orange-soft);}
+.footer-bottom{
+  border-top:1px solid var(--line-soft);padding-top:14px;
+  font-size:11.8px;color:var(--text-3);display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;
+}
+.search-empty{font-size:13px;color:var(--orange-soft);padding:10px 2px;display:none;}
+.search-empty.show{display:block;}
+.is-hidden{display:none !important;}
+
+@media(max-width:1080px){
+  .layout{grid-template-columns:170px minmax(0,1fr);}
+  .col-right{display:none;}
+  .hero-inner{grid-template-columns:1fr;gap:26px;}
+  .hero-visual{order:-1;justify-content:flex-start;}
+  .hero-visual svg{max-width:300px;}
+}
+@media(max-width:860px){
+  .layout{grid-template-columns:1fr;padding-top:20px;}
+  .col-left{position:static;}
+  .channel-list{display:flex;flex-wrap:wrap;gap:4px;}
+  .channel-list li{margin:0;}
+  .channel-list a{font-size:12.5px;padding:5px 9px;background:var(--panel-2);}
+  .channel-list .cnt{display:none;}
+  .card-grid,.comment-grid{grid-template-columns:1fr;}
+  .cat-grid{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .trend-grid{grid-template-columns:1fr;}
+  .footer-top{grid-template-columns:1fr;gap:22px;}
+  .footer-groups{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .header-inner{padding:10px 14px;gap:12px;}
+  .search-box input{width:96px;}
+  .hero-inner{padding:26px 14px 30px;}
+  .layout{padding-left:14px;padding-right:14px;}
+  .block{padding:17px 15px;}
+  .update-list li{grid-template-columns:70px minmax(0,1fr);}
+}
+@media(max-width:420px){
+  .brand-name{font-size:17px;}
+  .header-actions .btn-primary{display:none;}
+  .search-box input{width:78px;}
+  .cat-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div class="sticky-top">
+  <div class="notice-bar">
+    <div class="notice-inner">
+      <span class="notice-dot"></span>
+      <span>今日乱斗轮换已上新：双坦消耗流开放、爆发刺客限时加成，晚间 20:00 段位赛同步开启</span>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/#top" aria-label="91今日大乱斗首页">
+        <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true">
+          <rect width="64" height="64" rx="14" fill="#161826"/>
+          <path d="M13 41 L25 19 L33 31 L41 21 L52 43 Z" fill="#ff7a3d"/>
+          <circle cx="21" cy="47" r="4.5" fill="#38d6c9"/>
+          <circle cx="44" cy="49" r="3.4" fill="#ffd166"/>
+          <path d="M30 44 L34 44 L32 52 Z" fill="#9b8cff"/>
+        </svg>
+        <span class="brand-text">
+          <span class="brand-name">91今日大乱斗</span>
+          <span class="brand-sub">Daily Brawl Arena</span>
+        </span>
+      </a>
+
+      <nav class="header-nav" aria-label="主题导航">
+        <a href="/#hot">今日热门</a>
+        <a href="/#latest">更新动态</a>
+        <a href="/#cat">阵容分类</a>
+        <a href="/#deep">深度解析</a>
+        <a href="/#faq">常见问题</a>
+        <a href="/#news">资讯</a>
+      </nav>
+
+      <div class="header-actions">
+        <div class="search-box">
+          <input type="search" id="siteSearch" placeholder="搜阵容 / 英雄 / 玩法" aria-label="站内搜索">
+          <button type="button" id="searchBtn">搜索</button>
+        </div>
+        <a class="btn-primary" href="/#guide">新手入门</a>
+      </div>
+    </div>
+  </header>
+</div>
+
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div>
+      <span class="hero-tag">◆ 每日轮换 · 阵容研究 · 强度对比</span>
+      <h1>91今日大乱斗</h1>
+      <p class="hero-desc">每天一局不重样的多人乱斗：双坦消耗、爆发刺客、远程风筝、控制链控场四类阵容轮换开放。这里按当日环境整理阵容搭配思路、英雄强度对比与对线细节，帮你在开黑前把选人和节奏想清楚。</p>
+      <div class="hero-meta">
+        <div><strong>4</strong>今日轮换阵容</div>
+        <div><strong>12</strong>英雄强度对比</div>
+        <div><strong>20:00</strong>晚间段位赛</div>
+      </div>
+      <div class="hero-cta">
+        <a class="btn-primary" href="/#hot">看今日推荐阵容</a>
+        <a class="btn-ghost" href="/#deep">读阵容克制解析</a>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <svg viewBox="0 0 420 320" role="img">
+        <defs>
+          <linearGradient id="gA" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#ff7a3d"/><stop offset="1" stop-color="#ffd166"/>
+          </linearGradient>
+          <linearGradient id="gB" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#38d6c9"/><stop offset="1" stop-color="#9b8cff"/>
+          </linearGradient>
+        </defs>
+        <rect x="8" y="8" width="404" height="304" rx="20" fill="#161a2c" stroke="#2e3557"/>
+        <circle cx="210" cy="160" r="104" fill="none" stroke="#2e3557" stroke-dasharray="5 8"/>
+        <circle cx="210" cy="160" r="70" fill="none" stroke="#262c49"/>
+        <path d="M210 56 L262 160 L210 264 L158 160 Z" fill="url(#gA)" opacity=".16"/>
+        <path d="M120 160 L210 108 L300 160 L210 212 Z" fill="url(#gB)" opacity=".14"/>
+        <path d="M150 210 L192 100 L214 148 L240 104 L286 214 Z" fill="url(#gA)" opacity=".9"/>
+        <circle cx="150" cy="232" r="12" fill="#38d6c9"/>
+        <circle cx="286" cy="236" r="9" fill="#ffd166"/>
+        <rect x="186" y="238" width="52" height="9" rx="4.5" fill="#9b8cff" opacity=".8"/>
+        <rect x="66" y="48" width="96" height="26" rx="13" fill="#1b2038" stroke="#2e3557"/>
+        <text x="80" y="66" font-size="12" fill="#38d6c9" font-family="sans-serif">轮换 · 今日</text>
+        <rect x="258" y="250" width="108" height="26" rx="13" fill="#1b2038" stroke="#2e3557"/>
+        <text x="272" y="268" font-size="12" fill="#ff7a3d" font-family="sans-serif">强度 · 对比</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<div class="layout">
+
+  <!-- ================= 左栏 ================= -->
+  <aside class="col-left" aria-label="频道与分类导航">
+    <div class="panel">
+      <div class="panel-title">频道入口</div>
+      <ul class="channel-list">
+        <li><a href="/#hot">今日热门阵容 <span class="cnt">8</span></a></li>
+        <li><a href="/#latest">轮换更新动态 <span class="cnt">10</span></a></li>
+        <li><a href="/#cat">阵容类型分类 <span class="cnt">8</span></a></li>
+        <li><a href="/#deep">克制与强度解析 <span class="cnt">6</span></a></li>
+        <li><a href="/#guide">上手体验指南 <span class="cnt">5</span></a></li>
+        <li><a href="/#faq">玩家常见问题 <span class="cnt">6</span></a></li>
+        <li><a href="/#comments">评论与实测 <span class="cnt">14</span></a></li>
+        <li><a href="/#news">版本相关资讯 <span class="cnt">6</span></a></li>
+        <li><a href="/#rec">相关玩法推荐 <span class="cnt">8</span></a></li>
+        <li><a href="/#trend">环境趋势观察 <span class="cnt">3</span></a></li>
+      </ul>
+    </div>
+    <div class="panel">
+      <div class="panel-title">热门标签</div>
+      <div class="tag-cloud">
+        <a href="/#hot">双坦消耗流</a>
+        <a href="/#hot">爆发刺客</a>
+        <a href="/#cat">控制链阵容</a>
+        <a href="/#cat">远程风筝</a>
+        <a href="/#deep">先手开团</a>
+        <a href="/#deep">反打节奏</a>
+        <a href="/#faq">新手选人</a>
+        <a href="/#rec">通勤速战</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ================= 中栏 ================= -->
+  <main>
+
+    <!-- 1 内容简介 -->
+    <section class="block" id="about">
+      <div class="block-head">
+        <h2>关于 <span>91今日大乱斗</span> 的玩法定位</h2>
+        <span class="block-sub">每日轮换 · 阵容研究</span>
+      </div>
+      <div class="intro-text">
+        <p class="intro-lead"><strong>91今日大乱斗</strong>是一档围绕每日轮换多人乱斗模式展开的阵容研究栏目，核心内容是把当天开放的四类阵容环境讲清楚：哪套阵容在当前加成下更容易打出优势、哪些英雄适合新手直接上手、遇到克制阵容时该换什么节奏。它不是单纯罗列英雄名单，而是按“选人—对线—团战—收尾”的顺序拆解一局乱斗的完整思路。</p>
+        <p>对刚接触乱斗模式的玩家来说，最容易卡住的地方往往不是操作，而是选人阶段的判断：双坦消耗流看着稳，但遇到高爆发刺客容易被切后排；远程风筝阵容清线快，可一旦被控制链黏住就整段输出断档。栏目把这些取舍做成可对照的条目，让“这局该选什么”变成一个能快速查、能反复看的问题。</p>
+        <p>每日对战的节奏也和常规对局不同。乱斗模式的经济增长更快、复活时间更短，前两分钟的换血往往直接决定第一波资源归属。因此阵容搭配之外，我们还会记录开局站位、第一波技能释放顺序、以及中期换线时机的具体做法，方便你在通勤路上用几分钟把当天的环境看明白。</p>
+        <p>如果你更关心英雄层面的强弱，可以看强度对比部分；如果你习惯先定阵容再补英雄，分类入口里的八类阵容方向会更顺手。所有内容围绕同一个目标：让每一次进入乱斗房间之前，心里都有一套可执行的方案。</p>
+      </div>
+    </section>
+
+    <!-- 2 热门内容推荐 -->
+    <section class="block" id="hot">
+      <div class="block-head">
+        <h2>今日热门阵容推荐</h2>
+        <span class="block-sub">按当前轮换加成排序</span>
+      </div>
+      <div class="card-grid" id="hotGrid">
+        <article class="card">
+          <span class="type">双坦消耗</span>
+          <h3>双坦消耗流：铁壁＋回响的拖后期打法</h3>
+          <p>两名前排轮流吃伤害，靠持续回复磨掉对手血线，适合对局节奏偏慢、愿意打满六分钟的玩家。</p>
+          <div class="card-tags"><span>前排轮换</span><span>持续回复</span><span>拖后期</span></div>
+          <div class="card-foot"><span>热度 <b>9.4</b></span><span>更新 今日</span><span>上手 ★★★☆</span></div>
+        </article>
+        <article class="card">
+          <span class="type">爆发刺客</span>
+          <h3>爆发刺客：影刃切入与二段收割</h3>
+          <p>利用乱斗复活快的特性反复切入，专打对方后排，前四分钟拿不到人头就要及时换节奏。</p>
+          <div class="card-tags"><span>后排切入</span><span>二段收割</span><span>速战</span></div>
+          <div class="card-foot"><span>热度 <b>9.1</b></span><span>更新 今日</span><span>上手 ★★☆☆</span></div>
+        </article>
+        <article class="card">
+          <span class="type">远程风筝</span>
+          <h3>远程风筝阵：长弓＋减速的拉扯体系</h3>
+          <p>靠射程差和减速场不断拉开距离，适合喜欢边打边退、用走位换输出的玩家。</p>
+          <div class="card-tags"><span>射程压制</span><span>减速拉扯</span><span>走位换血</span></div>
+          <div class="card-foot"><span>热度 <b>8.7</b></span><span>更新 今日</span><span>上手 ★★★☆</span></div>
+        </article>
+        <article class="card">
+          <span class="type">控制链</span>
+          <h3>控制链阵容：三段控制的团战锁死</h3>
+          <p>先手控住关键目标后由队友接第二段，团战容错高，但需要队友配合节奏，单排慎用。</p>
+          <div class="card-tags"><span>先手开团</span><span>连控衔接</span><span>团队配合</span></div>
+          <div class="card-foot"><span>热度 <b>8.5</b></span><span>更新 今日</span><span>上手 ★★★★</span></div>
+        </article>
+        <article class="card">
+          <span class="type">混合节奏</span>
+          <h3>混编速攻：双前排＋单刺客的抢节奏组合</h3>
+          <p>开局直接压线抢资源，用人数差打出第一波优势，适合双排或三排沟通顺畅的队伍。</p>
+          <div class="card-tags"><span>开局压线</span><span>抢资源</span><span>双排适配</span></div>
+          <div class="card-foot"><span>热度 <b>8.2</b></span><span>更新 今日</span><span>上手 ★★★☆</span></div>
+        </article>
+        <article class="card">
+          <span class="type">反打体系</span>
+          <h3>后手反打：吃第一波伤害再反推的阵容</h3>
+          <p>故意让出先手权，用减伤和护盾扛过对手爆发窗口，等技能空档再集体反推。</p>
+          <div class="card-tags"><span>减伤抗压</span><span>技能空档</span><span>反推节奏</span></div>
+          <div class="card-foot"><span>热度 <b>7.9</b></span><span>更新 今日</span><span>上手 ★★★★</span></div>
+        </article>
+      </div>
+    </section>
+
+    <!-- 3 最新更新 -->
+    <section class="block" id="latest">
+      <div class="block-head">
+        <h2>轮换更新与今日动态</h2>
+        <span class="block-sub">按时间倒序</span>
+      </div>
+      <ul class="update-list">
+        <li><time>今日 09:20</time><div><span class="u-name">双坦消耗流开放</span><span class="u-desc">前排回复加成提升，拖后期打法重新进入推荐序列。</span></div></li>
+        <li><time>今日 09:20</time><div><span class="u-name">爆发刺客限时加成</span><span class="u-desc">切入后首段伤害提高，后排站位需要更谨慎。</span></div></li>
+        <li><time>今日 08:50</time><div><span class="u-name">远程风筝阵微调</span><span class="u-desc">减速场持续时间缩短，拉扯节奏需要提前半拍。</span></div></li>
+        <li><time>今日 08:50</time><div><span class="u-name">控制链阵容回归</span><span class="u-desc">连控衔接窗口放宽，双人配合的容错明显提升。</span></div></li>
+        <li><time>昨日 21:10</time><div><span class="u-name">混编速攻实测记录</span><span class="u-desc">三排环境下开局压线成功率较高，单排效果一般。</span></div></li>
+        <li><time>昨日 20:30</time><div><span class="u-name">后手反打体系补充</span><span class="u-desc">新增对手爆发窗口的判断方法，含具体时间点。</span></div></li>
+        <li><time>昨日 18:40</time><div><span class="u-name">英雄强度对比更新</span><span class="u-desc">十二名常用英雄的定位与适配阵容重新排序。</span></div></li>
+        <li><time>昨日 16:05</time><div><span class="u-name">新手选人清单修订</span><span class="u-desc">按操作难度重新分组，标注了三个易上手英雄。</span></div></li>
+        <li><time>昨日 14:20</time><div><span class="u-name">对线细节补充</span><span class="u-desc">增加第一波技能释放顺序与站位示意说明。</span></div></li>
+        <li><time>昨日 11:00</time><div><span class="u-name">晚间段位赛说明</span><span class="u-desc">20:00 场次匹配规则与阵容选择建议同步整理。</span></div></li>
+      </ul>
+    </section>
+
+    <!-- 4 分类入口 -->
+    <section class="block" id="cat">
+      <div class="block-head">
+        <h2>阵容类型分类入口</h2>
+        <span class="block-sub">按打法方向筛选</span>
+      </div>
+      <div class="cat-grid">
+        <a class="cat" href="/#hot"><b>双坦消耗流</b><small>前排轮换 · 拖后期</small></a>
+        <a class="cat" href="/#hot"><b>爆发刺客流</b><small>后排切入 · 速战</small></a>
+        <a class="cat" href="/#hot"><b>远程风筝流</b><small>射程压制 · 拉扯</small></a>
+        <a class="cat" href="/#hot"><b>控制链阵容</b><small>先手开团 · 连控</small></a>
+        <a class="cat" href="/#deep"><b>后手反打体系</b><small>减伤抗压 · 反推</small></a>
+        <a class="cat" href="/#deep"><b>混编速攻</b><small>开局压线 · 抢节奏</small></a>
+        <a class="cat" href="/#deep"><b>单核保护阵</b><small>围绕主C · 保排</small></a>
+        <a class="cat" href="/#deep"><b>多线游走流</b><small>换线支援 · 人数差</small></a>
+      </div>
+    </section>
+
+    <!-- 5 深度解析 -->
+    <section class="block deep" id="deep">
+      <div class="block-head">
+        <h2>阵容克制与英雄强度深度解析</h2>
+        <span class="block-sub">选人—对线—团战—收尾</span>
+      </div>
+
+      <h3>为什么乱斗模式的选人逻辑和常规对局不同</h3>
+      <p>乱斗模式的经济曲线更陡，装备成型时间被压缩到常规对局的三分之二左右。这意味着前两分钟的对线结果会被放大：先拿到第一波资源的一方，往往能把优势延续到中期团战。因此在91今日大乱斗的每日环境里，选人阶段要优先考虑“前期能不能站住线”，而不是“后期上限有多高”。</p>
+      <p>另一个差异是复活时间。乱斗模式里阵亡代价更低，敢于换血、敢于用技能换对方关键技能的打法更容易积累优势。所以爆发刺客和混编速攻这类强调节奏的阵容，在每日轮换中经常出现。</p>
+
+      <h3>四类主流阵容的克制关系</h3>
+      <p>把当天开放的阵容放在一起看，会形成一组相对稳定的克制链。理解这条链，比记住单个英雄的强弱更有用。</p>
+      <ul>
+        <li><strong>双坦消耗流</strong>克制爆发刺客：前排血线厚，刺客一套打不死就会被反手消耗。</li>
+        <li><strong>爆发刺客</strong>克制远程风筝：射程优势在贴脸后失效，后排一旦被切就整段输出断档。</li>
+        <li><strong>远程风筝</strong>克制控制链：控制技能需要近身或预判，风筝阵容靠距离让连控难以衔接。</li>
+        <li><strong>控制链</strong>克制双坦消耗：连控能打断回复节奏，让前排的持续回复来不及生效。</li>
+      </ul>
+      <div class="callout">这条克制链不是绝对的。站位失误、技能空放都会让克制关系反转，所以实战中更建议先看对手前三十秒的走位，再决定是否按原计划执行。</div>
+
+      <h3>英雄强度对比：按定位分组看更清楚</h3>
+      <p>单看胜率排序容易误判，因为不同英雄承担的任务不同。把常用英雄按定位分组，再比较同组内的差异，判断会更准确。</p>
+      <ul>
+        <li><strong>前排抗压组</strong>：铁壁、磐石、回响。铁壁适合先手吃伤害，磐石更适合反打，回响的回复量在拖后期时更稳。</li>
+        <li><strong>爆发切入组</strong>：影刃、疾刺、裂空。影刃的二段收割最稳定，疾刺依赖进场时机，裂空对操作要求最高。</li>
+        <li><strong>远程输出组</strong>：长弓、霜羽、疾风。长弓射程最远，霜羽带减速更适合拉扯，疾风清线快但怕贴脸。</li>
+        <li><strong>控制辅助组</strong>：锁链、缚灵、鸣钟。锁链先手最直接，缚灵适合接第二段，鸣钟的团控范围最大但前摇明显。</li>
+      </ul>
+
+      <h3>对线期的三个具体判断点</h3>
+      <p>第一波交锋通常发生在开局四十秒到一分钟之间。这个阶段建议观察三件事：对方前排是否主动压线、对方刺客是否在侧翼游走、对方远程是否在补兵间隙偷点。三个信号里出现两个，基本可以判断对手的阵容意图。</p>
+      <p>如果对方前排主动压线，多半是双坦消耗或混编速攻，此时应保持距离、优先清线；如果刺客频繁在侧翼出现，说明对方准备打切入节奏，后排要提前留一个位移或保命技能。</p>
+
+      <h3>团战阶段的技能释放顺序</h3>
+      <p>控制链阵容的常见失误是把三段控制同时交出去，导致后续没有衔接手段。更稳的做法是：先手控住关键目标，等队友跟进后再接第二段，第三段留作打断对方反打。爆发刺客则相反，需要在对方控制技能进入冷却后再进场，避免刚切入就被锁住。</p>
+      <p>双坦消耗流在团战中的任务是分批吃伤害，而不是两个人同时顶上去。轮流承伤可以让回复效果覆盖更长时间，也能让对手的输出目标不断切换。</p>
+
+      <h3>中期换线与资源取舍</h3>
+      <p>乱斗模式的中期资源点刷新较快，很多玩家会因为贪一个资源点而丢掉整条线的节奏。比较稳妥的做法是：当对方两人以上聚集在同一侧时，另一侧直接换线推进，用人数差换取资源，而不是强行接团。</p>
+      <p>如果己方阵容是远程风筝或后手反打，中期更应该主动放弃部分资源，把对手引到狭窄地形再打。狭窄地形会压缩对手的走位空间，让射程和控制技能的价值同时提升。</p>
+
+      <h3>收尾阶段容易忽略的细节</h3>
+      <p>最后两分钟的复活时间会明显缩短，这意味着“打退对手”不等于“赢下这波”。在91今日大乱斗的每日对局里，收尾阶段更建议优先处理兵线和资源，而不是追着残血目标深入。追人过深导致阵型分散，是被翻盘最常见的原因之一。</p>
+      <p>另外，收尾阶段要留意对方的关键技能是否已经转好。控制链阵容的大招、爆发刺客的进场技能，都是能在几秒内改变局势的因素，提前判断可以避免最后一波团战被打穿。</p>
+    </section>
+
+    <!-- 6 体验指南 -->
+    <section class="block" id="guide">
+      <div class="block-head">
+        <h2>上手体验指南</h2>
+        <span class="block-sub">从选人到复盘的五个步骤</span>
+      </div>
+      <ol class="steps">
+        <li><b>先定阵容方向。</b>开局前先看当天开放的轮换阵容，从双坦消耗、爆发刺客、远程风筝、控制链里选一个自己熟悉的方向，不要临场改主意。</li>
+        <li><b>再补英雄。</b>按定位分组挑英雄：前排看承伤与回复，刺客看切入与收割，远程看射程与减速，辅助看控制衔接。</li>
+        <li><b>对线期观察对手。</b>前四十秒重点看对方前排是否压线、刺客是否游走，两个信号出现就调整站位。</li>
+        <li><b>团战分批交技能。</b>控制技能分段释放，爆发技能等对方控制进入冷却再进场，避免一波技能全空。</li>
+        <li><b>收尾优先处理资源。</b>最后两分钟不追残血、不散阵型，先清兵线再考虑接团。</li>
+      </ol>
+    </section>
+
+    <!-- 7 FAQ -->
+    <section class="block faq" id="faq">
+      <div class="block-head">
+        <h2>玩家常见问题</h2>
+        <span class="block-sub">选人与节奏高频疑问</span>
+      </div>
+      <details open>
+        <summary>乱斗模式的新手适合先练哪类阵容？</summary>
+        <div class="ans">建议从双坦消耗流或控制链阵容入手。这两类阵容对操作精度的要求相对低，更依赖站位和技能时机，新手更容易在对局中理解乱斗模式的节奏差异。爆发刺客对进场时机要求高，建议熟悉地图后再练。</div>
+      </details>
+      <details>
+        <summary>双坦消耗流遇到爆发刺客应该怎么调整？</summary>
+        <div class="ans">核心是不要让两名前排同时被切入。可以让一名前排主动站在侧翼吸引刺客，另一名保持在中路附近接应；同时后排要留一个保命技能，避免被一套带走。如果对方刺客发育明显领先，可以考虑放弃部分资源、把对局拖到装备成型。</div>
+      </details>
+      <details>
+        <summary>远程风筝阵容为什么经常在中期被翻盘？</summary>
+        <div class="ans">常见原因是中期换线时阵型分散。远程阵容的价值来自集体拉扯，一旦有人单独走线被抓住，人数差会让后续团战很难打。建议中期保持两人以上同行，遇到对方集结就主动后撤，把对手引进狭窄地形再反打。</div>
+      </details>
+      <details>
+        <summary>英雄强度对比应该看胜率还是看定位？</summary>
+        <div class="ans">建议先看定位再看胜率。不同定位承担的任务不同，直接比较胜率容易误判。更实用的做法是在同定位组内比较，例如前排组里比较铁壁、磐石、回响的承伤与回复差异，再结合自己队伍的阵容方向选择。</div>
+      </details>
+      <details>
+        <summary>控制链阵容单排能用吗？</summary>
+        <div class="ans">可以用，但容错明显低于多排。控制链依赖队友及时跟进第二段控制，单排时沟通不足容易造成控制交空。如果坚持单排，建议把第一段控制留作反打手段，而不是主动开团。</div>
+      </details>
+      <details>
+        <summary>每日轮换阵容一般什么时候更新？</summary>
+        <div class="ans">轮换内容通常在每日上午更新，晚间段位赛前会再确认一次加成状态。建议在开赛前查看当天的阵容方向与英雄加成，再决定选人方案，避免按前一天的经验直接进场。</div>
+      </details>
+    </section>
+
+    <!-- 8 用户评论 -->
+    <section class="block" id="comments">
+      <div class="block-head">
+        <h2>玩家评论与实测反馈</h2>
+        <span class="block-sub">来自对局后的真实体验记录</span>
+      </div>
+      <div class="comment-grid">
+        <div class="comment"><div class="who"><span class="avatar" style="background:#ff7a3d">夜</span><span class="nick">夜航船</span><span class="stars">★★★★★</span></div>双坦消耗流今天真的稳，拖到六分钟以后对面刺客完全打不动。</div>
+        <div class="comment"><div class="who"><span class="avatar" style="background:#38d6c9">青</span><span class="nick">青柠汽水</span><span class="stars">★★★★☆</span></div>远程风筝阵中期确实容易散，按文章说的两人同行之后好多了。</div>
+        <div class="comment"><div class="who"><span class="avatar" style="background:#ffd166">阿</span><span class="nick">阿追</span><span class="stars">★★★★☆</span></div>爆发刺客的进场时机讲得很具体，等控制交完再切这套思路有用。</div>
+        <div class="comment"><div class="who"><span class="avatar" style="background:#9b8cff">三</span><span class="nick">三号位老陈</span><span class="stars">★★★☆☆</span></div>控制链单排还是难，队友跟不上第二段，建议多排再用。</div>
+        <div class="comment"><div class="who"><span class="avatar" style="background:#ff7a3d">小</span><span class="nick">小满不加班</span><span class="stars">★★★★★</span></div>分类入口按打法分很直观，比按英雄名找阵容快很多。</div>
+        <div class="comment"><div class="who"><span class="avatar" style="background:#38d6c9">风</span><span class="nick">风里有沙</span><span class="stars">★★★★☆</span></div>克制链那部分写得清楚，原来控制链是专门克双坦的。</div>
+        <div class="comment"><div class="who"><span class="avatar" style="background:#ffd166">橘</span><span class="nick">橘子汽水味</span><span class="stars">★★★☆☆</span></div>混编速攻单排效果一般，还是得找队友沟通。</div>
+        <div class="comment"><div class="who"><span class="avatar" style="background:#9b8cff">半</span><span class="nick">半盏茶</span><span class="stars">★★★★☆</span></div>对线期观察三个信号这个说法很实用，开局四十秒就能判断意图。</div>
+        <div class="comment"><div class="who"><span class="avatar" style="background:#ff7a3d">慢</span><span class="nick">慢慢来</span><span class="stars">★★★★★</span></div>收尾阶段不追残血这条我吃了好几次亏，现在终于记住了。</div>
+        <div class="comment"><div class="who"><span class="avatar" style="background:#38d6c9">白</span><span class="nick">白露未晞</span><span class="stars">★★★★☆</span></div>英雄强度按定位分组比较确实比单看胜率靠谱。</div>
+        <div class="comment"><div class="who"><span class="avatar" style="background:#ffd166">野</span><span class="nick">野区散步</span><span class="stars">★★★☆☆</span></div>后手反打体系需要队友配合，路人局容易变成白让先手。</div>
+        <div class="comment"><div class="who"><span class="avatar" style="background:#9b8cff">一</span><span class="nick">一只咸鱼</span><span class="stars">★★★★☆</span></div>通勤路上看几分钟就能知道今天该选什么，节奏刚好。</div>
+        <div class="comment"><div class="who"><span class="avatar" style="background:#ff7a3d">北</span><span class="nick">北巷不夏</span><span class="stars">★★★★★</span></div>铁壁和回响的轮换承伤讲得细，实战里确实比两人同时顶更耐打。</div>
+        <div class="comment"><div class="who"><span class="avatar" style="background:#38d6c9">林</span><span class="nick">林间有风</span><span class="stars">★★★★☆</span></div>晚间段位赛前看一眼轮换加成，选人思路清晰不少。</div>
+      </div>
+    </section>
+
+    <!-- 9 相关资讯 -->
+    <section class="block" id="news">
+      <div class="block-head">
+        <h2>版本相关资讯</h2>
+        <span class="block-sub">轮换与环境变化</span>
+      </div>
+      <ul class="news-list">
+        <li>
+          <div class="n-head"><span class="n-title">双坦消耗流回归推荐序列，前排回复加成提升</span><time>今日</time></div>
+          <p>本次轮换提高了前排的持续回复效率，拖后期打法重新具备竞争力，建议搭配一名反打型前排。</p>
+        </li>
+        <li>
+          <div class="n-head"><span class="n-title">爆发刺客限时加成，后排站位需要更谨慎</span><time>今日</time></div>
+          <p>切入后的首段伤害提高，远程阵容在对线期应减少单独走位，避免被一套带走。</p>
+        </li>
+        <li>
+          <div class="n-head"><span class="n-title">减速场持续时间缩短，风筝阵容节奏提前</span><time>昨日</time></div>
+          <p>远程风筝流的拉扯窗口变短，需要更早判断后撤时机，避免在减速结束后被贴脸。</p>
+        </li>
+        <li>
+          <div class="n-head"><span class="n-title">控制链衔接窗口放宽，双人配合容错提升</span><time>昨日</time></div>
+          <p>连控之间的间隔要求降低，双排环境下控制链阵容的成功率有明显提升。</p>
+        </li>
+        <li>
+          <div class="n-head"><span class="n-title">晚间段位赛匹配规则调整，20:00 场次开放</span><time>昨日</time></div>
+          <p>晚间场次按段位分组匹配，建议开赛前确认当天轮换阵容，再决定选人方向。</p>
+        </li>
+        <li>
+          <div class="n-head"><span class="n-title">英雄强度对比表更新，十二名常用英雄重新排序</span><time>昨日</time></div>
+          <p>按前排、刺客、远程、辅助四组重新整理，同组内差异比跨组比较更具参考价值。</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 10 相关推荐 -->
+    <section class="block" id="rec">
+      <div class="block-head">
+        <h2>相关玩法与阵容方向</h2>
+        <span class="block-sub">按搜索热度整理</span>
+      </div>
+      <div class="rec-tags">
+        <a href="/#hot">双坦消耗流阵容搭配</a>
+        <a href="/#hot">爆发刺客后排切入技巧</a>
+        <a href="/#hot">远程风筝减速拉扯打法</a>
+        <a href="/#deep">控制链先手开团顺序</a>
+        <a href="/#deep">后手反打减伤抗压</a>
+        <a href="/#deep">混编速攻开局压线</a>
+        <a href="/#guide">新手乱斗选人清单</a>
+        <a href="/#faq">晚间段位赛阵容选择</a>
+      </div>
+    </section>
+
+    <!-- 11 趋势观察 -->
+    <section class="block" id="trend">
+      <div class="block-head">
+        <h2>当前环境趋势观察</h2>
+        <span class="block-sub">近三日阵容使用变化</span>
+      </div>
+      <div class="trend-grid">
+        <div class="trend">
+          <b>前排承伤占比上升</b>
+          <span>双坦消耗流使用率连续三日走高，拖后期打法在六分钟后的胜率提升明显。</span>
+          <div class="up">↑ 使用率 +12%</div>
+        </div>
+        <div class="trend">
+          <b>刺客切入更依赖时机</b>
+          <span>爆发刺客的加成提高了收益，但进场过早被反控的情况也在增加。</span>
+          <div class="up">↑ 收益 +8%</div>
+        </div>
+        <div class="trend">
+          <b>控制链双排占比提升</b>
+          <span>连控窗口放宽后，双排玩家更愿意选择控制链阵容，单排使用率变化不大。</span>
+          <div class="up">↑ 双排占比 +9%</div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= 右栏 ================= -->
+  <aside class="col-right" aria-label="辅助阅读入口">
+    <div class="panel">
+      <div class="panel-title">页内目录</div>
+      <ul class="toc">
+        <li><a href="/#about">玩法定位</a></li>
+        <li><a href="/#hot">今日热门阵容</a></li>
+        <li><a href="/#latest">轮换更新动态</a></li>
+        <li><a href="/#cat">阵容类型分类</a></li>
+        <li><a href="/#deep">克制与强度解析</a></li>
+        <li><a href="/#guide">上手体验指南</a></li>
+        <li><a href="/#faq">玩家常见问题</a></li>
+        <li><a href="/#comments">玩家评论</a></li>
+        <li><a href="/#news">版本资讯</a></li>
+        <li><a href="/#rec">相关推荐</a></li>
+        <li><a href="/#trend">趋势观察</a></li>
+      </ul>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">热门条目</div>
+      <ol class="rank-list">
+        <li><a href="/#hot">双坦消耗流：铁壁＋回响</a></li>
+        <li><a href="/#hot">爆发刺客：影刃切入收割</a></li>
+        <li><a href="/#hot">远程风筝：长弓减速拉扯</a></li>
+        <li><a href="/#hot">控制链：三段控制的团战锁死</a></li>
+        <li><a href="/#deep">克制链：谁克谁一目了然</a></li>
+        <li><a href="/#deep">英雄强度按定位分组对比</a></li>
+      </ol>
+    </div>
+
+    <div class="panel">
+      <div class="panel-title">延伸阅读</div>
+      <div class="side-note">
+        <p><b>新手先看：</b>双坦消耗流对操作要求低，适合先熟悉乱斗节奏。</p>
+        <p><b>进阶再看：</b>刺客切入时机与控制链衔接，是提升胜率的关键点。</p>
+        <p><b>复盘重点：</b>最后两分钟的阵型保持，比追残血更影响结果。</p>
+      </div>
+    </div>
+  </aside>
+
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="brand" style="gap:10px;">
+          <svg class="brand-mark" viewBox="0 0 64 64" aria-hidden="true" style="width:36px;height:36px;">
+            <rect width="64" height="64" rx="14" fill="#161826"/>
+            <path d="M13 41 L25 19 L33 31 L41 21 L52 43 Z" fill="#ff7a3d"/>
+            <circle cx="21" cy="47" r="4.5" fill="#38d6c9"/>
+            <circle cx="44" cy="49" r="3.4" fill="#ffd166"/>
+          </svg>
+          <span class="brand-name">91今日大乱斗</span>
+        </div>
+        <p>每日轮换多人乱斗的阵容研究栏目，聚焦阵容搭配、英雄强度对比与对局节奏拆解，帮玩家在开黑前把选人和打法想清楚。</p>
+      </div>
+      <div class="footer-groups">
+        <div>
+          <h4>阵容方向</h4>
+          <a href="/#hot">双坦消耗流</a>
+          <a href="/#hot">爆发刺客流</a>
+          <a href="/#hot">远程风筝流</a>
+          <a href="/#hot">控制链阵容</a>
+        </div>
+        <div>
+          <h4>打法解析</h4>
+          <a href="/#deep">克制关系</a>
+          <a href="/#deep">英雄强度对比</a>
+          <a href="/#deep">团战技能顺序</a>
+          <a href="/#deep">中期换线取舍</a>
+        </div>
+        <div>
+          <h4>参与入口</h4>
+          <a href="/#guide">新手体验指南</a>
+          <a href="/#faq">常见问题</a>
+          <a href="/#comments">玩家实测</a>
+          <a href="/#news">版本资讯</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 91今日大乱斗 · 内容围绕每日轮换乱斗玩法整理</span>
+      <span>部分内容为示例数据，仅用于展示页面结构</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var input = document.getElementById('siteSearch');
+  var btn = document.getElementById('searchBtn');
+  var grid = document.getElementById('hotGrid');
+
+  var empty = document.createElement('p');
+  empty.className = 'search-empty';
+  empty.textContent = '没有找到匹配的阵容或玩法，换个关键词试试，例如“双坦”“刺客”“控制链”。';
+  if(grid && grid.parentNode){
+    grid.parentNode.insertBefore(empty, grid.nextSibling);
+  }
+
+  function runSearch(){
+    var kw = (input && input.value ? input.value : '').trim();
+    if(!grid) return;
+    var cards = grid.querySelectorAll('.card');
+    var visible = 0;
+    if(!kw){
+      cards.forEach(function(c){ c.classList.remove('is-hidden'); });
+      empty.classList.remove('show');
+      return;
+    }
+    var lower = kw.toLowerCase();
+    cards.forEach(function(c){
+      var text = c.textContent.toLowerCase();
+      if(text.indexOf(lower) > -1){
+        c.classList.remove('is-hidden');
+        visible++;
+      }else{
+        c.classList.add('is-hidden');
+      }
+    });
+    if(visible === 0){
+      empty.classList.add('show');
+    }else{
+      empty.classList.remove('show');
+    }
+  }
+
+  if(btn){ btn.addEventListener('click', runSearch); }
+  if(input){
+    input.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){ e.preventDefault(); runSearch(); }
+    });
+    input.addEventListener('input', function(){
+      if(input.value.trim() === ''){ runSearch(); }
+    });
+  }
+})();
+</script>
+
+</body>
+                                                             </html>
